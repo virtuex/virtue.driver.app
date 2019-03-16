@@ -1,0 +1,137 @@
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 21.33333333px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 22.08px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 25.6px !important;
+  }
+}
+a{color:#000000;}
+a:hover{color:#0498a1;}
+.titlebar.reverse {
+	background-color: #157b42;
+    border-color: #006c2e;
+}
+
+.xunjia-box{
+	padding: 12px 12px 12px 16px;
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #d9d9d9;
+	font-size:17px;
+}
+.exam-list ul li
+{ 
+  border-bottom:1px solid #d9d9d9;
+  line-height:2.5rem;
+  text-indent:8px;
+  font-size:17px;
+}
+.xunjia-box .inner{
+	position: relative;
+	padding-left: 80px;
+}
+
+.xunjia-box .inner .item-name{
+	position: absolute;
+	left: 0;
+	width: 80px;
+	top: 0;
+	bottom: 0;
+	text-align: right;
+	font-size: 0.65rem;
+}
+
+.xunjia-box .inner .item-value{
+	color: #0498a1;
+	font-size: 0.65rem;
+}
+
+.xunjia-box .inner .item-value p{
+	padding: 10px;
+	background-color: #fff;
+	color: #000;
+	font-size: 0.45rem;
+	border: 1px solid #bababa;
+	margin: 5px 0;
+}
+
+.weui_cells{
+	margin-top: 0;
+}
+
+.weui_cells:before{
+	border:0;
+}
+
+.weui_cell{
+	height: 2.5rem;
+	line-height: 2.5rem;
+	font-size: 0.7rem;
+}
+
+.weui_cell{
+	padding: 0;
+}
+
+.weui_cell p{
+	font-size: 0.7rem;
+}
+
+.weui_cell i{
+	color: #93929a;
+	font-size: 0.8rem;
+}
+
+.weui_cell_bd{
+	padding: 0 15px;
+}
+.head-box{
+	padding-top: 44px;
+	background-color: #157b42;
+}
+.head-box h3{
+	color: #fff;
+	text-align: center;
+	height:33px;
+	line-height:33px;
+}
+.head-box .head-icon-outer{
+
+	width: 5.75rem;
+	height: 5.75rem;
+	border-radius: 50%;
+	margin-left:auto;
+	margin-right:auto;
+	
+	background-color: #fff;
+}
+.head-box .head-icon-outer .head-icon{
+	position: absolute;
+	width: 5.4rem;
+	height: 5.4rem;
+	border-radius: 50%;
+	margin-left:auto;
+	margin-left:3px;
+	margin-right:auto;
+	margin-top:3px;
+	background: url(../img/touxiang.png) center center no-repeat;
+}
+.head-box h5{
+	color: #fff;
+	text-align: center;
+	font-size:0.75rem;
+	height:33px;
+	line-height:33px;
+	width: 100%;
+}
+h5 a:link{color:#ffffff;}
+h5 a:visited{color:#ffffff;}
+h5 a:hover{color:#ffffff;}
+h5 a:active{color:#ffffff;}

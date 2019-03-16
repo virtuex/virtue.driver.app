@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>振国驾考-模拟考试系统-模拟考试</title>
+        <link rel="stylesheet" href="fonts/iconfont.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/mui.css"/>
+        <link rel="stylesheet" href="css/animate.css"/>
+        <link rel="stylesheet" href="css/xunjia_bill.css"/>
+        <script>(function (doc, win) {
+          var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+            };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);</script>
+    </head>
+    <body>
+        <header>
+            <div class="titlebar reverse">
+                <a href="javascript:window.history.go(-1);">
+                    <i class="iconfont">&#xe640;</i>
+                </a>
+                <h1>模拟试卷</h1>
+            </div>
+        </header>
+        <article style="bottom: 0;">
+			 <div class="xunjia-box">    
+				<i class="iconfont" style="width:32px;height:30px;color:#157b42;font-weight:bold;">&#xe62d;</i>自主练习
+            </div>
+			<div class="exam-box">
+				<div class="exam-list">
+					<ul>
+						<li class="inner">
+							<a href="random_index.html">xxxxxx（初级）自主练习</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+            <div class="xunjia-box">    
+				<i class="iconfont" style="width:30px;height:30px;color:#157b42;font-weight:bold;">&#xe637;</i>模拟考试
+            </div>
+			<div class="exam-box">
+				<div class="exam-list">
+					<ul>
+						<li class="inner">
+							<a href="exam.html">xxxxxx（初级）模拟考试</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+        </article>
+		<footer>
+            <ul class="menubar animated fadeInUp delay3">
+                 <li class="tab" onclick="window.location='exam_list.html'">
+                    <i class="iconfont" style="font-size:24px;">&#xe61f;</i>
+                    <label class="tab-label">模拟考试</label>
+					<span class="point"></span>
+                </li>
+				<li class="tab" onclick="window.location='chapter_index.html'">
+                    <i class="iconfont">&#xe64a;</i>
+                    <label class="tab-label">模块练习</label>
+                </li>
+                <li class="tab" onclick="window.location='error_dis.html'">
+                    <i class="iconfont">&#xe63f;</i>
+                    <label class="tab-label">错题题库</label>
+                </li>
+                <li class="tab" onclick="window.location='collect_dis.html'">
+                    <i class="iconfont">&#xe63e;</i>
+                    <label class="tab-label">我的收藏</label>
+                </li>
+            </ul>
+		</footer>
+        <script src="lib/jquery-2.1.4.js"></script>
+        <script src="js/jquery-weui.js"></script>
+    </body>
+</html>

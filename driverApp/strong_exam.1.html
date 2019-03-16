@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>振国驾考-模拟考试系统-自主练习</title>
+        <link rel="stylesheet" href="fonts/iconfont.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+		<link rel="stylesheet" href="css/mui.min.css"/>
+        <link rel="stylesheet" href="css/mui.css"/>
+        <link rel="stylesheet" href="css/app.css"/>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"> </script> 
+        <script>
+        (function (doc, win) {
+          var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+            };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+       $(function(){
+	     var allcount;
+	     $("#beginexam").click(function(){
+             if($('#dxnum').val()==0&&$('#pdnum').val()==0&&$('#dxxnum').val()==0)
+		     {
+			      mui.alert("对不起，请先选择题目数！", "提示",function(){});
+		     }else
+		     {
+				 $("#form1").submit();
+		     }
+	     });
+		  $('#dx_num0').click(function(){
+				allcount=0;
+				$('#dx_num40').css("background-color","#157b42"); 
+				$('#dx_num40').css("background-color","#f1f1f1"); 
+				$('#dx_num20').css("background-color","#f1f1f1"); 
+				$('#dx_num60').css("background-color","#f1f1f1");
+				$('#dx_num80').css("background-color","#f1f1f1");
+				$('#dxnum').val(allcount);
+		 });
+		 $('#dx_num20').click(function(){
+				allcount=20;
+				$('#dx_num0').css("background-color","#f1f1f1"); 
+				$('#dx_num40').css("background-color","#f1f1f1"); 
+				$('#dx_num20').css("background-color","#157b42"); 
+				$('#dx_num60').css("background-color","#f1f1f1");
+				$('#dx_num80').css("background-color","#f1f1f1");
+				$('#dxnum').val(allcount);
+		 });
+		 $('#dx_num40').click(function(){
+				allcount=40;
+				$('#dx_num0').css("background-color","#f1f1f1"); 
+				$('#dx_num40').css("background-color","#157b42"); 
+				$('#dx_num20').css("background-color","#f1f1f1"); 
+				$('#dx_num60').css("background-color","#f1f1f1");
+				$('#dx_num80').css("background-color","#f1f1f1");
+				$('#dxnum').val(allcount);
+		 });
+		 $('#dx_num60').click(function(){
+			
+				allcount=60;
+				$('#dx_num0').css("background-color","#f1f1f1"); 
+				$('#dx_num40').css("background-color","#f1f1f1"); 
+				$('#dx_num20').css("background-color","#f1f1f1"); 
+				$('#dx_num60').css("background-color","#157b42");
+				$('#dx_num80').css("background-color","#f1f1f1");
+				$('#dxnum').val(allcount);
+		 });
+		  $('#dx_num80').click(function(){
+		  
+				allcount=80;
+				$('#dx_num0').css("background-color","#f1f1f1"); 
+				$('#dx_num40').css("background-color","#f1f1f1"); 
+				$('#dx_num20').css("background-color","#f1f1f1"); 
+				$('#dx_num60').css("background-color","#f1f1f1");
+				$('#dx_num80').css("background-color","#157b42");
+				$('#dxnum').val(allcount);
+		 });
+		$('#dxx_num10').click(function(){
+			if(pd10flag==false)
+			{
+			allcount=10;
+			$('#dxx_num10').css("background-color","#157b42"); 
+			$('#dxx_num20').css("background-color","#f1f1f1"); 
+			$('#dxxnum').val(allcount);
+			pd10flag=true;
+			}else
+			{
+				$('#pdnum').val();
+				$('#pd_num10').css("background-color","#f1f1f1");
+			}
+
+		});
+		$('#dxx_num20').click(function(){
+			allcount=20;
+			$('#dxx_num10').css("background-color","#f1f1f1")
+			$('#dxx_num20').css("background-color", "#157b42"); 
+			$('#dxxnum').val(allcount);
+
+		});
+		$('#pd_num0').click(function(){
+			allcount=10;
+			$('#pd_num0').css("background-color","#157b42"); 
+			$('#pd_num10').css("background-color","#f1f1f1"); 
+			$('#pd_num20').css("background-color","#f1f1f1"); 
+			$('#pd_num30').css("background-color","#f1f1f1");
+			$('#pd_num40').css("background-color","#f1f1f1");
+			$('#pdnum').val(allcount);
+			
+		});
+		$('#pd_num10').click(function(){
+			allcount=10;
+			$('#pd_num0').css("background-color","#f1f1f1"); 
+			$('#pd_num10').css("background-color","#157b42"); 
+			$('#pd_num20').css("background-color","#f1f1f1"); 
+			$('#pd_num30').css("background-color","#f1f1f1");
+			$('#pd_num40').css("background-color","#f1f1f1");
+			$('#pdnum').val(allcount);
+			
+		});
+		$('#pd_num20').click(function(){
+			
+			allcount=20;
+			$('#pd_num0').css("background-color","#f1f1f1"); 
+			$('#pd_num10').css("background-color","#f1f1f1"); 
+			$('#pd_num20').css("background-color","#157b42"); 
+			$('#pd_num30').css("background-color","#f1f1f1");
+			$('#pd_num40').css("background-color","#f1f1f1");
+			$('#pdnum').val(allcount);
+			
+		});
+		$('#pd_num30').click(function(){
+        
+			allcount=30;
+			$('#pd_num0').css("background-color","#f1f1f1"); 
+			$('#pd_num10').css("background-color","#f1f1f1"); 
+			$('#pd_num20').css("background-color","#f1f1f1"); 
+			$('#pd_num30').css("background-color","#157b42");
+			$('#pd_num40').css("background-color","#f1f1f1");
+			$('#pdnum').val(allcount);
+			
+		});
+		$('#pd_num40').click(function(){
+			
+			allcount=40;
+			$('#pd_num0').css("background-color","#f1f1f1"); 
+			$('#pd_num10').css("background-color","#f1f1f1"); 
+			$('#pd_num20').css("background-color","#f1f1f1"); 
+			$('#pd_num30').css("background-color","#f1f1f1");
+			$('#pd_num40').css("background-color","#157b42");
+			$('#pdnum').val(allcount);
+			
+		});
+		
+		$('#type_num0').click(function(){
+			allcount=40;
+			$('#type_num10').css("background-color","#f1f1f1"); 
+			$('#type_num0').css("background-color","#157b42");
+			$('#pdnum').val(allcount);
+		});
+		
+		$('#type_num10').click(function(){
+			allcount=40;
+			$('#type_num0').css("background-color","#f1f1f1"); 
+			$('#type_num10').css("background-color","#157b42");
+			$('#pdnum').val(allcount);
+		});
+	});
+    </script>
+    </head>
+    <body>
+        <header>
+            <div class="titlebar reverse">
+                <a href="javascript:window.history.go(-1);">
+                    <i class="iconfont">&#xe640;</i>
+                </a>
+				<h1>强化练习</h1>
+            </div>
+        </header>
+        <article style="padding-bottom: 54px;padding-top:44px;">
+            <div class="list-wrap">
+                <h4>难易程度</h4>
+                <ul class="app-list">
+				    <li>
+                        <div class="app-wrap">
+                            <span id="dx_num20">易错题</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="app-wrap">
+                            <span id="dx_num40">一般题</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="app-wrap">
+                            <span id="dx_num60">简单题</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-wrap">
+                <h4>知识点</h4>
+                <ul class="app-list">
+				    <li>
+                        <div class="app-wrap">
+                             <span id="pd_num0">信号</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="app-wrap">
+                             <span id="pd_num10">时间</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="app-wrap">
+                             <span id="pd_num20">罚款</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="app-wrap">
+                             <span id="pd_num30">距离</span>
+                        </div>
+                    </li>
+					<li>
+                        <div class="app-wrap">
+                             <span id="pd_num40">速度</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+			 <div class="list-wrap">
+			    <h4>题目类型</h4>
+			    <ul class="app-list">
+				    <li>
+			            <div class="app-wrap">
+			                 <span id="type_num0">选择题</span>
+			            </div>
+			        </li>
+			        <li>
+			            <div class="app-wrap">
+			                 <span id="type_num10">判断题</span>
+			            </div>
+			        </li>
+			    </ul>
+			</div>
+			<div>
+			    <a href="javascript:void(0)" class="weui_btn login-btn weui_btn_primary" id="beginexam">开始答题</a>
+			</div>
+			<form method="post" action="random_exam.html" id="form1"> 
+			    <input type="hidden" id="dxnum" name="dxnum" value="0"/>
+				<input type="hidden" id="pdnum" name="pdnum" value="0"/>
+				<input type="hidden" id="dxxnum" name="dxxnum" value="0"/>
+			</form>
+        </article>
+    </body>
+</html>

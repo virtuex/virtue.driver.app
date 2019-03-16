@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="fonts/iconfont.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/mui.css"/>
+        <link rel="stylesheet" href="css/examdo.css"/>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<title>振国驾考-模拟考试系统-自主练习测试结果</title>
+		<script type="text/javascript">
+             pushHistory(); 
+             window.addEventListener("popstate", function(e) { 
+				pushHistory();
+			 }, false); 
+			 function pushHistory() { 
+				var state = { 
+					title:"title", 
+					url:"#"
+				}; 
+				window.history.pushState(state, "title", "#"); 
+			} 
+	   </script>
+	</head>
+	 <body>
+        <header>
+            <div class="titlebar reverse">
+                <a href="exam_list.html">
+                    <i class="iconfont">&#xe640;</i>
+                </a>
+				<h1>测试结果</h1>
+            </div>
+        </header>
+        <article style="bottom: 0;">
+            <ul class="xunjia-box">
+                <li class="inner" style="text-align:center;">
+				    <font style="color:#a0a0a0">已做题：</font>
+					<font id="item_done"></font>/
+					<font style="color:#a0a0a0">总题量：</font>
+					<font id="item_total"></font>
+                </li>
+            </ul>
+            <div class="details">
+                <div class="detail-box">
+                    <div class="detail-title" style="text-align:left;">&nbsp;&nbsp;做对试题1道</div>
+                    <div class="detail-wrap" style="width:80px;height:80px;float:left;text-align:center;border-right:1px solid #d5d5d5;margin-top:10px;">
+					    <div style="heigh:40px;line-height:40px;">单选题</div>
+						<div style="heigh:40px;line-height:40px;">1道</div>
+                    </div>
+                    <div class="detail-wrap" style="width:80px;height:80px;float:left;text-align:center;margin-top:10px;">
+                        <div style="heigh:40px;line-height:40px;">判断题</div>
+						<div style="heigh:40px;line-height:40px;">0道</div>
+                    </div>
+					<div style="clear:both"></div>
+                </div>
+            </div>
+        </article>
+        <a class="back" href="index.html"></a> 
+        <footer>
+           <div class="button">
+                <div class="bd">
+                    <a href="exam_do_analy.html" class="weui_btn weui_btn_primary">查看解析</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

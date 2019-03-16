@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>振国驾考-模拟考试系统-章节练习</title>
+		<link rel="stylesheet" href="fonts/iconfont.css" />
+		<link rel="stylesheet" href="css/font.css" />
+		<link rel="stylesheet" href="css/mui.css" />
+		<link rel="stylesheet" href="css/index.css">
+		<script src="js/mui.js"></script>
+		<link rel="stylesheet" href="css/table.css" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/date.js"></script>
+		<script type="text/javascript">
+			String.prototype.format = function() {
+				if (arguments.length == 0) return this;
+				for (var s = this, i = 0; i < arguments.length; i++)
+					s = s.replace(new RegExp("\\{" + i + "\\}", "g"), arguments[i]);
+				return s;
+			};
+			Date.prototype.Format = function(fmt) { //author: meizz   
+				var o = {
+					"M+": this.getMonth() + 1, //月份   
+					"d+": this.getDate(), //日   
+					"h+": this.getHours(), //小时   
+					"m+": this.getMinutes(), //分   
+					"s+": this.getSeconds(), //秒   
+					"q+": Math.floor((this.getMonth() + 3) / 3), //季度   
+					"S": this.getMilliseconds() //毫秒   
+				};
+				if (/(y+)/.test(fmt))
+					fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+				for (var k in o)
+					if (new RegExp("(" + k + ")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+				return fmt;
+			}
+			$(function() {
+				var token = localStorage.getItem("token");
+				var grade = "<tr>\n" +
+					"<td data-label=\"用户名\">{0}</td>\n" +
+					"<td data-label=\"成绩\">{1}</td>\n" +
+					"<td data-label=\"日期\">{2}</td>\n" +
+					"</tr>";
+				mui.ajax('http://127.0.0.1:8880/api/grade/my', {
+					data: {
+						token: token
+					},
+					// dataType: 'json', //服务器返回json格式数据
+					async: true,
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					// 					headers: {
+					// 						'Content-Type': 'application/json'
+					// 					},
+					success: function(mydata) {
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						var errorSub = "";
+						var code = mydata.retCode;
+						if (code == 200) {
+							const json_str = jQuery.parseJSON(JSON.stringify(mydata))
+							var message = json_str.data
+							localStorage.setItem("total", message.length);
+							$("#user").append(mydata.message);
+							$.each(message, function(i, obj) {
+								// alert(obj);
+								$('#grade').append(
+									grade.format(mydata.message, obj.userGrade, obj.date)
+								);
+							});
+						} else {
+							alert(mydata.message);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						//异常处理；
+						console.log(type);
+					}
+				});
+
+			});
+		</script>
+		pushHistory();
+		window.addEventListener("popstate", function(e) {
+		pushHistory();
+		}, false);
+
+		function pushHistory() {
+		var state = {
+		title: "title",
+		url: "#"
+		};
+		<!-- window.history.pushState(state, "title", "#"); -->
+		}
+		</script>
+		<style type="text/css">
+			a:link {
+				color: #157b42;
+			}
+
+			/* 未被访问的链接 */
+			a:visited {
+				color: #157b42;
+			}
+
+			/* 已被访问的链接 */
+			a:hover {
+				color: #157b42;
+			}
+
+			/* 鼠标指针移动到链接上 */
+			a:active {
+				color: #157b42;
+			}
+
+			/* 正在被点击的链接 */
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="titlebar reverse" style="border-bottom:2px solid #02662e;">
+				<a href="index.html">
+					<i class="iconfont">&#xe640;</i>
+				</a>
+				<h1>驾校学员</h1>
+			</div>
+		</header>
+		<article style="width:100%;padding:0;">
+			<div class="head-box">
+				<h3>欢迎，<a id="user" style="color: red;"></a></h3>
+				<div class="head-icon-outer">
+					<div class="head-icon"></div>
+				</div>
+				<h5><a href="index.html">退出</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				</h5>
+				<div style="clear:both;"></div>
+			</div>
+		</article>
+		<article style="padding-bottom: 54px;padding-top:24px;">
+			<ul class="xunjia-tab clearfix">
+				<li class="red">历史成绩</li>
+
+			</ul>
+			<ul class="xunjia-box">
+				<table>
+					<thead>
+						<tr>
+							<th>用户名</th>
+							<th>成绩</th>
+							<th>日期</th>
+						</tr>
+					</thead>
+					<tbody id="grade">
+
+					</tbody>
+				</table>
+			</ul>
+		</article>
+		<footer>
+			<ul class="menubar animated fadeInUp delay3">
+
+				<li class="tab" onclick="window.location='chapter_index.html'">
+					<i class="iconfont">&#xe64a;</i>
+					<label class="tab-label">成绩历史</label>
+					<span class="point"></span>
+				</li>
+				<li class="tab" onclick="window.location='error_dis.html'">
+					<i class="iconfont">&#xe63f;</i>
+					<label class="tab-label">错题题库</label>
+				</li>
+				<li class="tab" onclick="window.location='collect_dis.html'">
+					<i class="iconfont">&#xe63e;</i>
+					<label class="tab-label">我的收藏</label>
+				</li>
+			</ul>
+		</footer>
+	</body>
+</html>

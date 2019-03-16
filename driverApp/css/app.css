@@ -1,0 +1,121 @@
+h4{
+    padding: 0.5rem;
+    font-size: 0.7rem;
+
+    font-weight: normal;
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom:0.5rem;
+}
+
+.list-wrap{
+    margin-bottom: 0.1rem;
+}
+
+.app-list {
+    overflow: hidden;
+    padding:0 0.25rem;
+ }
+.app-list li {
+    box-sizing: border-box;
+    float: left;
+    width: 20%;
+    padding-right: 0.25rem;
+    margin-bottom: 0.45rem;
+}
+
+.app-list li:nth-child(5n){
+    padding-right:0;
+}
+
+
+.app-list li .app-wrap{
+    background: #f1f1f1;
+    min-height:1.0rem;
+    height: 1.6rem;
+	line-height:1.6rem;
+    font-size: 0.35rem;
+    border:1px solid #bebebe;
+    text-align: center;
+}
+
+
+.app-list li .app-wrap:hover .iconfont{
+    color: #fff !important;
+}
+
+.app-list li .app-wrap a{
+    color: #000;
+}
+.app-list li .app-wrap .fa,.app-list li .app-wrap .iconfont{
+    margin-top: 0.2rem;
+    margin-bottom: 0.25rem;
+    font-size: 2.0rem;
+    height: 2.0rem;
+    width: 2.0rem;
+     line-height: 2.0rem;
+    color: #0498a1;
+    text-align: center;
+}
+.app-list li .app-wrap:hover a{
+    color: #fff;
+}
+.app-list li .app-wrap:hover .fa{
+    color: #fff;
+}
+
+
+.app-list li .app-wrap span{
+    display: block;
+    font-size: 0.55rem;
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 24px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 25px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 30px !important;
+  }
+}
+.weui_btn_primary{background-color:#0498a1}
+.weui_btn:after {
+	content: " ";
+	width: 200%;
+	height: 200%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 1px solid rgba(0,0,0,.2);
+	-webkit-transform: scale(.5);
+	transform: scale(.5);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	box-sizing: border-box;
+	border-radius: 10px
+}
+.weui_btn {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 14px;
+	padding-right: 14px;
+	box-sizing: border-box;
+	font-size: 18px;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	line-height: 2.33333333;
+	border-radius: 5px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	overflow: hidden
+}
+.weui_btn_primary {
+	background-color: #157b42;
+}

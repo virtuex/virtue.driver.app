@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>振国驾考-模拟考试系统-自主练习</title>
+		<link rel="stylesheet" href="fonts/iconfont.css" />
+		<link rel="stylesheet" href="css/font.css" />
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/mui.css" />
+		<link rel="stylesheet" href="css/app.css" />
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"> </script>
+		<script>
+			(function (doc, win) {
+          var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+            };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+       $(function(){
+	     var allcount;
+	     $("#beginexam").click(function(){
+             if($('#dxnum').val()==0&&$('#pdnum').val()==0&&$('#dxxnum').val()==0)
+		     {
+			      mui.alert("对不起，请先选择题目数！", "提示",function(){});
+		     }else{
+				var choice = $("#choice").val();
+				var judge = $("#judge").val();
+				localStorage.setItem("choiceNum",choice);
+				localStorage.setItem("judgeNum",judge);
+				window.location.href="random_exam.html"
+		     }
+			 })
+	     });
+    </script>
+	</head>
+	<body>
+		<header>
+			<div class="titlebar reverse">
+				<a href="javascript:window.history.go(-1);">
+					<i class="iconfont">&#xe640;</i>
+				</a>
+				<h1>自主练习</h1>
+			</div>
+		</header>
+		<article style="padding-bottom: 54px;padding-top:44px;">
+			<div class="list-wrap">
+				<h4>单选题</h4>
+				<ul class="app-list">
+					<div class="mui-numbox" data-numbox-step='5' data-numbox-min='5' data-numbox-max='50'>
+						<button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+						<input class="mui-numbox-input" type="number" id="choice" />
+						<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+					</div>
+				</ul>
+			</div>
+			<div class="list-wrap">
+				<h4>判断题</h4>
+				<ul class="app-list">
+					<div class="mui-numbox" data-numbox-step='5' data-numbox-min='5' data-numbox-max='50'>
+						<button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+						<input class="mui-numbox-input" type="number" id="judge" />
+						<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+					</div>
+				</ul>
+			</div>
+			<div class="list-wrap">
+				<div>
+					<a href="javascript:void(0)" class="weui_btn login-btn weui_btn_primary" id="beginexam">开始答题</a>
+				</div>
+				<!-- <form method="post" action="random_exam.html" id="form1"> 
+			    <input type="hidden" id="dxnum" name="dxnum" value="0"/>
+				<input type="hidden" id="pdnum" name="pdnum" value="0"/>
+			</form> -->
+		</article>
+	</body>
+</html>

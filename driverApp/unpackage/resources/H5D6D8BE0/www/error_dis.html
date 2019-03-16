@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<meta name="generator" content="bd-mobcard">
+<meta http-equiv="Cache-Control" content="no-cache">
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"> </script>      
+<title>振国驾考-模拟考试系统-我的错题</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/scrollbar.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="fonts/iconfont.css"/>
+<link rel="stylesheet" href="css/font.css"/>
+<link rel="stylesheet" href="css/mui.css"/>
+<link rel="stylesheet" href="css/mui.min.css"/>
+<script type="application/javascript" src="js/iscroll.js"></script>
+<style type="text/css" media="all">
+body,ul,li {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+#wrapper {
+	position:absolute; z-index:1;
+	top:45px; bottom:48px; left:0;
+	width:100%;
+	overflow:auto;
+}
+#scroller {
+	position:relative;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	float:left;
+	width:100%;
+	padding:0;
+}
+/**
+ *
+ * 下拉样式 Pull down styles
+ *
+ */
+#pullDown, #pullUp {
+	background:#fff;
+	height:40px;
+	line-height:40px;
+	padding:5px 10px;
+	border-bottom:1px solid #ccc;
+	font-weight:bold;
+	font-size:14px;
+	color:#888;
+}
+#pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+	display:block; float:left;
+	width:40px; height:40px;
+	background:url(img/pull-icon@2x.png) 0 0 no-repeat;
+	-webkit-background-size:40px 80px; background-size:40px 80px;
+	-webkit-transition-property:-webkit-transform;
+	-webkit-transition-duration:250ms;	
+}
+#pullDown .pullDownIcon {
+	-webkit-transform:rotate(0deg) translateZ(0);
+}
+#pullUp .pullUpIcon  {
+	-webkit-transform:rotate(-180deg) translateZ(0);
+}
+#pullDown.flip .pullDownIcon {
+	-webkit-transform:rotate(-180deg) translateZ(0);
+}
+#pullUp.flip .pullUpIcon {
+	-webkit-transform:rotate(0deg) translateZ(0);
+}
+#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+	background-position:0 100%;
+	-webkit-transform:rotate(0deg) translateZ(0);
+	-webkit-transition-duration:0ms;
+	-webkit-animation-name:loading;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+}
+@-webkit-keyframes loading {
+	from { -webkit-transform:rotate(0deg) translateZ(0); }
+	to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".test li").click(function(){
+		qid=$(this).attr("qid");
+		$(this).children("input").attr("checked",true);
+		answlival=$(this).attr("qvalue");
+		if(answlival==$("#Q"+qid).attr("qval"))
+		{
+			var btnArray = ["否", "是"];
+			mui.confirm("回答正确，要将此题目从错题集删除吗？", "确认提交", btnArray,function(e) {
+					if (e.index == 1) {
+					    mui.alert("删除成功!", "提示",function(){history.go(0);});
+					} else {
+						
+					}
+				})
+		}
+		else
+		{
+			$("#msg"+qid).text("正确答案是："+$("#Q"+qid).attr("qval"));
+			$("#msg"+qid).css("color","red");
+		}
+	});
+});
+//加入页面保护
+var myScroll,pullDownEl,pullDownOffset,pullUpEl,pullUpOffset,generatedCount = 0,page=2,status=0;
+
+/**
+ * 下拉刷新 （自定义实现此方法）
+ * myScroll.refresh();		// 数据加载完成后，调用界面更新方法
+ */
+ function pullDownAction () {
+	setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from 
+		myScroll.refresh();		//数据加载完成后，调用界面更新方法Remember to refresh when
+	}, 100);	
+}
+/**
+ * 滚动翻页 （自定义实现此方法）
+ * myScroll.refresh();		// 数据加载完成后，调用界面更新方法
+ */
+ function pullUpaAction1(){
+	 setTimeout(function () {
+       myScroll.refresh();	
+		 }, 100);
+ }
+function pullUpAction() {
+	var pagecount=$("#pagecount").val();
+	setTimeout(function () {
+	  if(page<=pagecount)
+	  {
+		   testel="<div class='test' style='display:block;margin:0 auto 0px auto;'><div class='test_con'><div class='item'><div class='tit' id='Q4' qval='A'><span>4.</span>这是第4题</div><div class='item_con'><ul><li style='border:0px;' onclick='javascript:displayAnswer(4,\'A\',0)'><input type='radio' name='QuestionA4' qid='4' value='A' class='answ' id='41'><label for='41' class='answli' qvalue='A' qid='4' onclick='displayAnswer(4,\'A\')'>选项A</label></li><li style='border:0px;' onclick='javascript:displayAnswer(4,\'B\',0)'><input type='radio' name='QuestionA4' qid='4' value='B' class='answ' id='42'><label for='42' class='answli' qvalue='B' qid='4' onclick='displayAnswer(4,\'B\')'>选项B</label></li><li style='border:0px;' onclick='javascript:displayAnswer(4,\'C\',0)'><input type='radio' name='QuestionA4' qid='4' value='C' class='answ' id='43'><label for='43' class='answli' qvalue='C' qid='4' onclick='displayAnswer(4,\'C\')'>选项C</label></li><li style='border:0px;' onclick='javascript:displayAnswer(4,\'D\',0)'><input type='radio' name='QuestionA4' qid='4' value='D' class='answ' id='44'><label for='44' class='answli' qvalue='D' qid='4' onclick='displayAnswer(4,\'D\')'>选项D</label></li></ul></div><div onclick='addCollection(4)' style='padding:5px 10px;height:22px;'><i class='iconfont' style='color:#01868e'>&#xe61d;</i>&nbsp;&nbsp;添加收藏</div><div style=padding:5px 10px;height:22px;><i class=iconfont style=color:#01868e>&#xe635;</i>&nbsp;&nbsp;知识点解析：xxxxx;</div><div id='msg4' style='padding:5px 22px;height:22px;'></div></div></div></div><div class='test' style='display:block;margin:0 auto 0px auto;'><div class='test_con'><div class='item'><div class='tit' id='Q5' qval='A'><span>5.</span>这是第5题</div><div class='item_con'><ul><li style='border:0px;' onclick='javascript:displayAnswer(5,\'A\',0)'><input type='radio' name='QuestionA4' qid='5' value='A' class='answ' id='51'><label for='51' class='answli' qvalue='A' qid='5' onclick='displayAnswer(5,\'A\')'>选项A</label></li><li style='border:0px;' onclick='javascript:displayAnswer(5,\'B\',0)'><input type='radio' name='QuestionA4' qid='4' value='B' class='answ' id='52'><label for='52' class='answli' qvalue='B' qid='5' onclick='displayAnswer(4,\'B\')'>选项B</label></li><li style='border:0px;' onclick='javascript:displayAnswer(5,\'C\',0)'><input type='radio' name='QuestionA4' qid='4' value='C' class='answ' id='53'><label for='53' class='answli' qvalue='C' qid='5' onclick='displayAnswer(4,\'C\')'>选项C</label></li><li style='border:0px;' onclick='javascript:displayAnswer(5,\'D\',0)'><input type='radio' name='QuestionA4' qid='5' value='D' class='answ' id='54'><label for='54' class='answli' qvalue='D' qid='5' onclick='displayAnswer(5,\'D\')'>选项D</label></li></ul></div><div onclick='addCollection(5)' style='padding:5px 10px;height:22px;'><i class='iconfont' style='color:#01868e'>&#xe61d;</i>&nbsp;&nbsp;添加收藏</div><div style=padding:5px 10px;height:22px;><i class=iconfont style=color:#01868e>&#xe635;</i>&nbsp;&nbsp;知识点解析：xxxxx;</div><div id='msg5' style='padding:5px 22px;height:22px;'></div></div></div></div>";
+		   $("#thelist").append(testel);
+		   page++;
+		   myScroll.refresh();	
+		   status=0;
+	}else{
+		   
+           $("#up").innerHTML="当前是最后一页";
+		   myScroll.refresh();
+	}
+	   
+	}, 100);	
+}
+function loaded() {
+	var pagecount=$("#pagecount").val();
+	pullDownEl = document.getElementById("pullDown");
+	pullDownOffset = pullDownEl.offsetHeight;
+	pullUpEl = document.getElementById("pullUp");	
+	pullUpOffset = pullUpEl.offsetHeight;
+	myScroll = new iScroll("wrapper", {
+		scrollbarClass: "myScrollbar", /* 重要样式 */
+		useTransition: false, /* 此属性不知用意，本人从true改为false */
+		topOffset: pullDownOffset,
+		onRefresh: function () {
+			if (pullDownEl.className.match("loading")) {
+				pullDownEl.className = "";
+				pullDownEl.querySelector(".pullDownLabel").innerHTML = "下拉刷新...";
+			} else if (pullUpEl.className.match("loading")) {
+				if(page<=pagecount)
+				{
+					pullUpEl.className = "";
+					pullUpEl.querySelector(".pullUpLabel").innerHTML = "上拉加载更多...";
+				}else
+				{
+					pullUpEl.className = "flip";
+					pullUpEl.querySelector(".pullUpLabel").innerHTML = "当前是最后一页";
+				}
+			}
+		},
+		onScrollMove: function () {
+            var pagecount=$("#pagecount").val();
+			if (this.y > 5 && !pullDownEl.className.match("flip")) {
+				pullDownEl.className = "flip";
+				pullDownEl.querySelector(".pullDownLabel").innerHTML = "松手开始更新...";
+				this.minScrollY = 0;
+			} else if (this.y < 5 && pullDownEl.className.match("flip")) {
+				pullDownEl.className = "";
+				pullDownEl.querySelector(".pullDownLabel").innerHTML = "下拉刷新...";
+				this.minScrollY = -pullDownOffset;
+			} else if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match("flip")) {
+				if(page<=pagecount && status==0)
+				{
+					pullUpEl.className = "flip";
+					pullUpEl.querySelector(".pullUpLabel").innerHTML = "松手开始更新...";
+					this.maxScrollY = this.maxScrollY;
+					
+				}
+			} else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match("flip")) {
+				if(page<=pagecount && status==0){
+					pullUpEl.className = "";
+					pullUpEl.querySelector(".pullUpLabel").innerHTML = "上拉加载更多...";
+					this.maxScrollY = pullUpOffset;
+				}
+			}
+		},
+		onScrollEnd: function () {
+			var pagecount=$("#pagecount").val();
+			if (pullDownEl.className.match("flip")) {
+				pullDownEl.className = "loading";
+				pullDownEl.querySelector(".pullDownLabel").innerHTML = "加载中...";	
+				pullDownAction();	// Execute custom function (ajax call?)
+			} else if (pullUpEl.className.match("flip")) {
+				if(page<=pagecount)
+				{
+					status=1;
+					pullUpEl.className = "loading";
+					pullUpEl.querySelector(".pullUpLabel").innerHTML = "加载中...";		
+					pullUpAction();	// Execute custom function (ajax call?)
+				}else
+				{
+					pullUpEl.querySelector(".pullUpLabel").innerHTML = "当前是最后一页";
+					//pullUpAction1();
+				}
+			}
+		}
+	});
+	setTimeout(function () { document.getElementById("wrapper").style.left = "0"; }, 800);
+}
+//初始化绑定iScroll控件 
+document.addEventListener("touchmove", function(e){ e.preventDefault(); }, false);
+document.addEventListener("DOMContentLoaded", loaded, false); 
+function dispcheckbox(id)
+{
+	var cid = document.getElementsByName("QuestionA"+id);
+    var value ="";
+    for(var i = 0; i < cid.length; i++){
+         if(cid[i].checked)
+         value+=cid[i].value;
+    }  
+	if(value==$("#Q"+id).attr("qval"))
+	{
+
+		$("#msg"+id).text("回答正确");
+		$("#msg"+id).css("color","green")
+	}
+	else
+	{
+		$("#msg"+id).text("正确答案是："+$("#Q"+id).attr("qval"));
+		$("#msg"+id).css("color","red")
+	}
+}
+</script>
+<script type="text/javascript"> 
+     pushHistory(); 
+     window.addEventListener("popstate", function(e) { 
+		pushHistory();
+	 }, false); 
+	 function pushHistory() { 
+		var state = { 
+			title:"title", 
+			url:"#"
+		}; 
+		window.history.pushState(state, "title", "#"); 
+	 } 
+</script>
+</head>
+<body oncopy="document.selection.empty()" onbeforecopy="return false">
+<header>
+     <div class="titlebar reverse" style="border-bottom:2px solid #01868e;">
+          <a href="examlist.php">
+             <i class="iconfont">&#xe640;</i>
+          </a>
+		  <h1 style="margin:none;margin-top:0;margin-bottom:0;">我的错题</h1>
+     </div>
+</header>
+<article>
+<div id="wrapper" style="top:30px;">
+ <div id="scroller">
+	<div id="pullDown">
+		<span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+	</div>
+	<div id="thelist">
+		  <div class="test" style="display:block;margin:0 auto 0px auto;">
+			  <div class="test_con">
+			      <div class="item">
+						<div class="tit" id="Q1" qval="A">
+							<span>1.</span>这是第一题
+						</div>
+						<div class="item_con">
+						  <ul>
+							  <li style="border:0px;" qid="1" qvalue="A">
+								<input type="radio" name="QuestionA1" qid="1" value="A"  class="answ"  id="11"/>
+								<label for="11" class="answli" qvalue="A" qid="1">选项A</label>
+							   </li>
+							   <li style="border:0px;" qid="1" qvalue="B">
+								<input type="radio" name="QuestionA1" qid="1" value="B"  class="answ"  id="12"/>
+								<label for="12" class="answli" qvalue="B" qid="1">选项B</label>
+							   </li>	
+							   <li style="border:0px;" qid="1" qvalue="C">
+								<input type="radio" name="QuestionA1" qid="1" value="C"  class="answ"  id="13"/>
+								<label for="13" class="answli" qvalue="C" qid="1">选项C</label>
+							   </li>	
+							   <li style="border:0px;" qid="1" qvalue="D">
+								<input type="radio" name="QuestionA1" qid="1" value="D"  class="answ"  id="14"/>
+								<label for="14" class="answli" qvalue="D" qid="1">选项D</label>
+							   </li>	
+						  </ul>
+						</div>
+						<div onclick="addCollection(1)" style="padding:5px 10px;height:22px;">
+						   <i class="iconfont" style="color:#01868e">&#xe61d;</i>&nbsp;&nbsp;添加收藏
+					    </div>
+						<div style="padding:5px 10px;height:22px;"><i class="iconfont" style="color:#01868e">&#xe635;</i>&nbsp;&nbsp;知识点解析：xxxxx;
+						</div> 
+						<div id="msg1" style="padding:5px 22px;height:22px;"></div>
+				</div><!--item结束-->
+	        </div><!--test_con结束-->
+        </div><!--test结束-->
+		<div class="test" style="display:block;margin:0 auto 0px auto;">
+			  <div class="test_con">
+			      <div class="item">
+						<div class="tit" id="Q2" qval="A">
+							<span>2.</span>这是第二题
+						</div>
+						<div class="item_con">
+						  <ul>
+							  <li style="border:0px;" qid="2" qvalue="A">
+								<input type="radio" name="QuestionA2" qid="2" value="A"  class="answ"  id="21"/>
+								<label for="21" class="answli" qvalue="A" qid="2">选项A</label>
+							   </li>
+							   <li style="border:0px;" qid="2" qvalue="B">
+								<input type="radio" name="QuestionA2" qid="2" value="B"  class="answ"  id="22"/>
+								<label for="22" class="answli" qvalue="B" qid="2">选项B</label>
+							   </li>	
+							   <li style="border:0px;" qid="2" qvalue="C">
+								<input type="radio" name="QuestionA2" qid="2" value="C"  class="answ"  id="23"/>
+								<label for="23" class="answli" qvalue="C" qid="2">选项C</label>
+							   </li>	
+							   <li style="border:0px;" qid="1" qvalue="D">
+								<input type="radio" name="QuestionA2" qid="2" value="D"  class="answ"  id="24"/>
+								<label for="24" class="answli" qvalue="D" qid="2">选项D</label>
+							   </li>	
+						  </ul>
+						</div>
+						<div onclick="addCollection(2)" style="padding:5px 10px;height:22px;">
+						   <i class="iconfont" style="color:#01868e">&#xe61d;</i>&nbsp;&nbsp;添加收藏
+					    </div>
+						<div style="padding:5px 10px;height:22px;"><i class="iconfont" style="color:#01868e">&#xe635;</i>&nbsp;&nbsp;知识点解析：xxxxx;
+						</div> 
+						<div id="msg1" style="padding:5px 22px;height:22px;"></div>
+				</div><!--item结束-->
+	        </div><!--test_con结束-->
+        </div><!--test结束-->
+		<div class="test" style="display:block;margin:0 auto 0px auto;">
+			  <div class="test_con">
+			      <div class="item">
+						<div class="tit" id="Q3" qval="A">
+							<span>3.</span>这是第三题
+						</div>
+						<div class="item_con">
+						  <ul>
+							  <li style="border:0px;" qid="3" qvalue="A">
+								<input type="radio" name="QuestionA3" qid="3" value="A"  class="answ"  id="31"/>
+								<label for="31" class="answli" qvalue="A" qid="3">选项A</label>
+							   </li>
+							   <li style="border:0px;" qid="3" qvalue="B">
+								<input type="radio" name="QuestionA3" qid="3" value="B"  class="answ"  id="32"/>
+								<label for="32" class="answli" qvalue="B" qid="3">选项B</label>
+							   </li>	
+							   <li style="border:0px;" qid="3" qvalue="C">
+								<input type="radio" name="QuestionA3" qid="3" value="C"  class="answ"  id="33"/>
+								<label for="33" class="answli" qvalue="C" qid="3">选项C</label>
+							   </li>	
+							   <li style="border:0px;" qid="3" qvalue="D">
+								<input type="radio" name="QuestionA3" qid="3" value="D"  class="answ"  id="34"/>
+								<label for="34" class="answli" qvalue="D" qid="3">选项D</label>
+							   </li>	
+						  </ul>
+						</div>
+						<div onclick="addCollection(3)" style="padding:5px 10px;height:22px;">
+						   <i class="iconfont" style="color:#01868e">&#xe61d;</i>&nbsp;&nbsp;添加收藏
+					    </div>
+						<div style="padding:5px 10px;height:22px;"><i class="iconfont" style="color:#01868e">&#xe635;</i>&nbsp;&nbsp;知识点解析：xxxxx;
+						</div> 
+						<div id="msg1" style="padding:5px 22px;height:22px;"></div>
+				</div><!--item结束-->
+	        </div><!--test_con结束-->
+        </div><!--test结束-->
+      </div><!--thelist结束-->
+	  <div id="pullUp">
+		<span class="pullUpIcon"></span><span class="pullUpLabel"  id="up">上拉加载更多...</span>
+	  </div>
+    </div><!--scroller结束-->
+  </div><!--wrapper结束-->
+</article>
+<footer>
+    <ul class="menubar animated fadeInUp delay3">
+       <li class="tab" onclick="window.location='exam_list.html'" style="color:#888;font-family:microsoft yahei;">
+            <i class="iconfont" style="font-size:24px;">&#xe61f;</i>
+            <label class="tab-label">模拟考试</label>
+       </li>
+	   <li class="tab" onclick="window.location='chapter_index.html'" style="color:#888;font-family:microsoft yahei;">
+             <i class="iconfont">&#xe64a;</i>
+             <label class="tab-label">模块练习</label>
+       </li>
+       <li class="tab" onclick="window.location='error_dis.html'" style="color:#888;font-family:microsoft yahei;">
+             <i class="iconfont">&#xe63f;</i>
+             <label class="tab-label">错题题库</label>
+			 <span class="point"></span>
+       </li>
+       <li class="tab" onclick="window.location='collect_dis.html'" style="color:#888;font-family:microsoft yahei;">
+             <i class="iconfont">&#xe63e;</i>
+             <label class="tab-label">我的收藏</label>
+       </li>
+    </ul>
+</footer>
+<script src="js/mui.min.js"></script>
+<script type="text/javascript">
+function displayAnswer(qid,qvalue,j)
+{
+	$("#"+qid+j).attr("checked",true);
+	if(qvalue==$("#Q"+qid).attr("qval"))
+	{
+		$("#msg"+qid).text("回答正确");
+		$("#msg"+qid).css("color","green");
+	}
+	else
+	{ 
+		$("#msg"+qid).text("正确答案是："+$("#Q"+qid).attr("qval"));
+		$("#msg"+qid).css("color","red");
+	}
+}
+ function addCollection(questionid)
+ {
+		mui.alert("添加收藏成功!", "提示",function(){});
+ }
+</script>
+<form>
+  <input type="hidden" name="pagecount" id="pagecount" value="2">
+</form>
+</body>
+</html>

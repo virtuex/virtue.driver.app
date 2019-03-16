@@ -1,0 +1,168 @@
+
+body{
+	background-color: #f1f1f1;
+}
+
+.titlebar.reverse {
+    background-color: #0498a1;
+    border-color: #0498a1;
+}
+
+article{
+	background-color: #f1f1f1;
+	padding-bottom: 2.45rem;
+}
+
+article .details{
+	padding: 0.375rem 0.45rem;
+	padding-bottom: 0;
+	background-color: #f1f1f1;
+}
+
+.details .detail-box{
+	border: 1px solid #cfcfcf;
+	background-color: #fff;
+	padding-top: 0.4rem;
+	padding-left: 0.7rem;
+	padding-right: 0.7rem;
+	padding-bottom: 0.3rem;
+	margin-bottom: 0.375rem;
+}
+
+.details .detail-box .detail-title{
+    text-align:center;
+    border-bottom:1px solid #d9d9d9;
+	line-height: 1.25rem;
+	height: 1.25rem;
+	font-size: 0.7rem;
+	color: #000;
+}
+
+.details .detail-box .detail-wrap{
+	height: 0.95rem;
+	line-height: 0.95rem;
+	font-size: 0.7rem;
+}
+
+.details .detail-box .detail-wrap span.left{
+	float: left;
+}
+
+.details .detail-box .detail-wrap span.gray{
+	color: #aaa;
+}
+
+.details .detail-box .detail-wrap span.num{
+	display: inline-block;
+	width: 40px;
+}
+
+.details .detail-box .detail-wrap span.green{
+	color: #0498a1;
+}
+
+.details .detail-box .detail-wrap input.right{
+	float: right;
+	border: 1px solid #bebebe;
+	height: 0.95rem;
+	width: 38px;
+	border-radius: 3px;
+}
+
+.xunjia-box{
+	background-color: #fff;
+}
+
+.xunjia-box .inner{
+	position: relative;
+	border-bottom: 1px solid #d9d9d9;
+	height: 2.025rem;
+	line-height: 2.025rem;
+	font-size: 0.65rem;
+}
+
+.xunjia-box .inner:first-child{
+	height: 2.125rem;
+	line-height: 2.125rem;
+}
+
+.xunjia-box .inner.innerP{
+	position: relative;
+	padding-left: 110px;
+	border-bottom: 1px solid #d9d9d9;
+	font-size: 14px;
+	height: auto;
+	line-height: 24px;
+}
+.weui_cells{
+	margin-top: 0;
+}
+
+.weui_cells:before{
+	border:0;
+}
+
+.button .bd{
+	padding: 0 0.45rem 0.45rem 0.6rem;
+}
+
+footer{
+	background-color: #f1f1f1;
+}
+
+.button .bd .weui_btn {
+    font-size: 0.875rem;
+    line-height: 2rem;
+    height: 2rem;
+    color: #fff;
+}
+html {
+	font-size: 20px
+}
+
+body {
+	font-size: 16px
+}
+
+@media only screen and (min-width:400px) {
+	html {
+		font-size: 23px!important
+	}
+}
+
+@media only screen and (min-width:414px) {
+	html {
+		font-size: 24px!important
+	}
+}
+
+@media only screen and (min-width:480px) {
+	html {
+		font-size: 25.6px!important
+	}
+}
+.weui_btn {
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    line-height: 2.33333;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    padding-left: 14px;
+    padding-right: 14px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+.back-index{
+    background:url("../img/returnindex.png");
+    bottom: 100px;
+    height: 33px;
+    position: fixed;
+    right: 0.5rem;
+    width: 110px;
+}
+

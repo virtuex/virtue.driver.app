@@ -1,0 +1,159 @@
+html {
+  font-size: 20px;
+}
+body {
+  font-size: 16px;
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 24px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 25px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 30px !important;
+  }
+}
+.header{
+	border-top: 0.35rem solid #006c2e;
+	text-align: center;
+	padding-top: 1.8rem;
+}
+
+::-webkit-input-placeholder,:-moz-placeholder,::-moz-placeholder,:-ms-input-placeholder{
+	font-size: 0.6rem;
+	color: #c5c5c5;
+}
+
+.header h2{
+	margin-top: 2.125rem;
+	font-size: 0.9rem;
+	font-weight: normal;
+	margin-bottom: 1.0rem;
+}
+
+.footer{
+	margin-top: 0.85rem;
+	text-align: center;
+	color: #676767;
+	font-size: 0.55rem;
+}
+
+
+.login-box{
+	padding: 2px 0;
+	border:1px solid #afafaf;
+	border-radius: 3px;
+	box-sizing: border-box;
+	margin-top:20px;
+}
+
+.login-box *{
+	box-sizing: border-box;
+}
+
+.login-wrap{
+	padding: 0 0.75rem;
+}
+
+.login-box input{
+	outline: none;
+	border:none;
+	width: 100%;
+	height: 2.0rem;
+	line-height: 2.0rem;
+	padding: 0 0.95rem;
+	border-top: 1px solid #cfcfcf;
+}
+
+.login-box .input-wrap{
+	position: relative;
+
+}
+
+.login-box .input-wrap .validate-code{
+	position: absolute;
+	right: 0.5rem;
+	top: 0.3rem;
+	height: 1.375rem;
+	width: 3.75rem;
+}
+
+.login-box .input-wrap:first-child input{
+	border-top: none;
+}
+
+.btns{
+	overflow: hidden;
+}
+.login-btn{
+	margin-bottom: 0.8rem;
+}
+.weui_btn_primary{background-color:#0498a1}
+.weui_btn:after {
+	content: " ";
+	width: 200%;
+	height: 200%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 1px solid rgba(0,0,0,.2);
+	-webkit-transform: scale(.5);
+	transform: scale(.5);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	box-sizing: border-box;
+	border-radius: 10px
+}
+.weui_btn {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 14px;
+	padding-right: 14px;
+	box-sizing: border-box;
+	font-size: 18px;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	line-height: 2.33333333;
+	border-radius: 5px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	overflow: hidden
+}
+.weui_btn_primary {
+	background-color: #006c2e;
+}
+.choose_box
+{
+    height: 4.5em;
+    line-height: 4.5em;
+    padding: 0 5px;
+}
+.nologin{text-align:center;margin-bottom:0.8rem;color:#676767;}
+.nologin a{color:red;}
+.contact{text-align:center;}
+.contact a{color:#676767;}
+#errmsg{color:red;font-family:"microsoft yahei";font-size:16px;text-align:center;margin-top:10px;}
+.login-box select {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #cfcfcf -moz-use-text-color -moz-use-text-color;
+    border-image: none;
+    border-style: solid none none;
+    border-width: 1px medium medium;
+    height: 2rem;
+    line-height: 2rem;
+    outline: medium none;
+    padding: 0 0.95rem;
+    width: 100%;
+	color:#a1a1b1;
+}

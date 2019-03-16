@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>振国驾考-模拟考试系统-答案解析</title>
+        <link rel="stylesheet" href="fonts/iconfont.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/mui.min.css"/>
+		<link rel="stylesheet" href="css/mui.css"/>
+		<link rel="stylesheet" href="css/style.css"/>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/TouchSlide.1.1.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#closeLayAB").click(function(){
+					$("#layAB").hide();
+				});
+				$("#collection").click(function(){
+					var id=$("#QuesDoing").val();
+					if(id=="")
+					{
+						$("#QuesDoing").val($("#QuestionDoing1").val());
+						id=$("#QuestionDoing1").val();
+					}
+					mui.alert("该题已加入收藏!", "提示",function(){});
+				});
+			});
+	    </script>
+        <script type="text/javascript">
+             pushHistory(); 
+             window.addEventListener("popstate", function(e) { 
+				pushHistory();
+			 }, false); 
+			 function pushHistory() { 
+				var state = { 
+					title:"title", 
+					url:"#"
+				}; 
+				window.history.pushState(state, "title", "#"); 
+			} 
+	   </script>
+    </head>
+    <body>
+	     <header>
+			<div class="titlebar reverse" >
+			   <div >
+					<a href="exam_list.html">
+                        <i class="iconfont">&#xe640;</i>
+                    </a>
+					<i style="color:#ffffff;font-size:20px;font-weight:bold;margin-left:10px;">答案解析</i>
+			   </div>
+			</div>
+		</header>
+		<article style="padding-bottom:44px;padding-top:44px;" id="leftTabBox">
+		<div class="bd" id="bd12">
+			 <div class="test" style="margin-top:10px;">
+			       <div class="test_con">
+			        <div class="item">
+				      <div class="tit">
+					    <span>1</span>
+						<input type="hidden" id="1" value="1"></input>题目内容
+					  </div>
+					  <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA1' class='answ' id='QuestionA1' value='' />
+						   <ul> 
+							  <li class='options' ids='1' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='1' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='1' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='1' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				  </div><!--item结束-->
+				  <div class='itemansw' id="QuesAnsw1">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		  <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>2</span>
+						<input type="hidden" id="2" value='2'></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA2' class='answ' id='QuestionA2' value='' />
+						   <ul> 
+							  <li class='options' ids='2' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='2' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='2' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='2' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw2">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		  <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>3</span>
+						<input type="hidden" id="3" value="3"></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA3' class='answ' id='QuestionA3' value='' />
+						   <ul> 
+							  <li class='options' ids='3' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='3' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='3' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='3' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw3">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		  <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>4</span>
+						<input type="hidden" id="4" value="4"></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA4' class='answ' id='QuestionA4' value='' />
+						   <ul> 
+							  <li class='options' ids='4' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='4' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='4' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='4' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw4">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		  <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>5</span>
+						<input type="hidden" id="5" value="5"></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA5' class='answ' id='QuestionA5' value='' />
+						   <ul> 
+							  <li class='options' ids='5' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='5' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='5' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='5' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw5">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		  <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>6</span>
+						<input type="hidden" id="6" value="6"></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA6' class='answ' id='QuestionA6' value='' />
+						   <ul> 
+							  <li class='options' ids='6' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='6' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='6' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='6' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw6">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		   <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>7</span>
+						<input type="hidden" id="7" value="7"></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA7' class='answ' id='QuestionA7' value='' />
+						   <ul> 
+							  <li class='options' ids='7' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='7' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='7' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='7' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw7">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		  <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>8</span>
+						<input type="hidden" id="8" value="8"></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA8' class='answ' id='QuestionA8' value='' />
+						   <ul> 
+							  <li class='options' ids='8' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='8' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='8' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='8' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw8">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		  <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>9</span>
+						<input type="hidden" id="9" value="9"></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA9' class='answ' id='QuestionA9' value='' />
+						   <ul> 
+							  <li class='options' ids='9' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='9' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='9' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='9' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw9">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		   <div class="test" style="margin-top:10px;">
+			   <div class="test_con">
+			      <div class="item">
+				     <div class="tit">
+					    <span>10</span>
+						<input type="hidden" id="10" value="10"></input>题目内容
+					 </div>
+					 <div class="item_con">
+					    <div class="answ">
+						   <input type='hidden' name='QuestionA10' class='answ' id='QuestionA10' value='' />
+						   <ul> 
+							  <li class='options' ids='10' val='答案A'><i>答案A</i></li>
+							  <li class='options' ids='10' val='答案B'><i>答案B</i></li>
+							  <li class='options' ids='10' val='答案C'><i>答案C</i></li>
+							  <li class='options' ids='10' val='答案D'><i>答案D</i></li>
+							</ul>
+						</div>
+					</div><!--item_con结束-->
+				</div><!--item结束-->
+				 <div class='itemansw' id="QuesAnsw10">
+					<div class='RightAnsw'>
+						<div style='padding:12px 20px;background-color:#ffa125;float:left;color:#ffffff;border-radius:25px;'>正确答案：A
+						</div>
+						<div style='padding:10px 20px;border:2px solid #ffa125;float:left;margin-left:15px;border-radius:25px;'>你的答案：无
+						</div>
+						<div class='clear'></div>
+				    </div>
+				  </div><!--itemansw结束-->
+				  <div class='AnswAnaly' style='margin-top:15px;'> 
+						<div style='height:44px;line-height:44px;background-color:#efefef;'>&nbsp;&nbsp;&nbsp;&nbsp;答案解析</div>
+						<div style='margin-top:10px;margin-bottom:10px;padding-left:20px;padding-right:20px;'>
+						<p>XXXXXXXXXXXX</p>
+						</div>
+		          </div>
+			 </div><!--test_con结束-->
+		  </div><!--test结束-->
+		  </div>
+			<div class="clear"></div>
+			<input type="hidden" id="QuesDoing"></input>
+        </article>
+        <article >
+			<div class="layAB" id="layAB">
+			    <div class="serialNum">
+					<div class="top">
+						 <span class="mark">
+						    <i class="noDo"></i><i>答错试题</i>
+							<i class="done"></i><i>答对试题</i>
+							<img src="img/back.png" width="42px" id="closeLayAB"/>
+						 </span>
+					 </div>
+					 <div class="con" >  <!--页码-->
+						<a href="#" class="done">1</a>
+						<a href="#" class="done">2</a>
+						<a href="#" class="done">3</a>
+						<a href="#" class="noDo">4</a>
+						<a href="#" class="noDo">5</a>
+						<a href="#" class="noDo">6</a>
+						<a href="#" class="noDo">7</a>
+						<a href="#" class="noDo">8</a>
+						<a href="#" class="noDo">9</a>
+						<a href="#" class="noDo">10</a>
+					 </div>
+					 <div style="height:30px;"></div>
+					 <div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>          
+		</article>
+		<a class="back" href="examlist.php"></a> 
+        <footer>
+            <ul class="menubar animated fadeInUp delay3">
+                <li class="tab" id="AnsSheet" style="color:#888;font-family:microsoft yahei;">
+                    <i class="iconfont" style="font-size:24px;">&#xe63c;</i>
+                    <label class="tab-label">答题板&nbsp;&nbsp;</label>
+                </li>
+                <li class="tab" id="collection" style="color:#888;font-family:microsoft yahei;">
+                    <i class="iconfont">&#xe61d;</i>
+                    <label class="tab-label">收藏</label>
+                </li>
+            </ul>
+        </footer>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript"> 
+		$(".con a").click(function(){
+			  index=$(this).text()-1;
+			  s=$(".test").css("width")
+			  temp=parseInt(s.substring(0,s.length-2));
+			  t="-"+temp*index+"px";
+			  document.getElementById("bd12").style.webkitTransform="translate("+t+",0px)  translateZ(0px)";
+			  $(".layAB").hide();
+	    }); 
+		$("#AnsSheet").click(function(){
+			 $(".layAB").show();
+	    });
+	    TouchSlide({slideCell:"#leftTabBox",startFun:function(i){ //已做题目标识
+		}});
+	</script>
+   </body>
+</html>

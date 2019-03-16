@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>注册</title>
+        <link rel="stylesheet" href="fonts/iconfont.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/mui.css"/>
+        <link rel="stylesheet" href="css/login.css"/>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/mobiscroll.2.13.2.js"></script>
+        <link href="css/mobiscroll.2.13.2.css" rel="stylesheet" />
+		<style type="text/css">
+		#company_dummy{color:#999999;}
+		</style>
+        <script>(function (doc, win) {
+          var docEl = doc.documentElement,
+            resizeEvt = "orientationchange" in window ? "orientationchange" : "resize",
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              docEl.style.fontSize = 20 * (clientWidth / 320) + "px";
+            };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener("DOMContentLoaded", recalc, false);
+        })(document, window);
+		function checkRegist()
+		{
+			$("#errmsg").html("");
+			if($("#username").val()==null||$("#username").val()=="")
+			{
+				$("#errmsg").html("请输入用户名！");
+				return false;
+			}
+			if($("#password").val()==null||$("#password").val()=="")
+			{
+				$("#errmsg").html("请输入密码！");
+				return false;
+			}
+			if($("#repassword").val()==null||$("#repassword").val()=="")
+			{
+				$("#errmsg").html("请输入确认密码！");
+				return false;
+			}else
+				if($("#password").val()!=$("#repassword").val())
+				{
+					$("#errmsg").html("密码与确认密码不一致！");
+					return false;
+				}
+			if($("#company").val()=="-1")
+			{
+				$("#errmsg").html("请选择单位！");
+				return false;
+			}
+			if($("#vcode").val()==null||$("#vcode").val()=="")
+			{
+				  $("#errmsg").html("请输入验证码！");
+				  return false;
+			}
+			location.href="index.html";
+		}
+			
+       
+	</script>
+    </head>
+    <body>
+        <div class="header">
+			<h1>振国驾考-模拟考试系统</h1>
+            <!-- <img src="img/logintitle.png" style="width:100%"> -->
+        </div>
+		<div class="errmsg" id="errmsg"></div>
+        <div class="login-wrap">
+            <div class="login-box">
+                <form action="" method="post">
+                    <div class="input-wrap">
+                        <input type="text" name="username" placeholder="手机号" id="username"/>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="password" name="password" placeholder="密码" id="password"/>
+                    </div>
+					 <div class="input-wrap">
+                        <input type="password" name="repassword" placeholder="再次输入密码" id="repassword"/>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" name="vcode" placeholder="验证码" id="vcode">
+                        <img src="img/vcode.jpg" class="validate-code">
+                    </div>
+                </form>
+            </div>
+			<div class="btns" style="margin-bottom:25px;"></div>
+            <!--<a href="index.html" class="weui_btn login-btn weui_btn_primary">注册</a>-->
+		      <a href="javascript:void(0)" onclick="javascript:checkRegist()" class="weui_btn login-btn weui_btn_primary">注册</a>
+			  <div class="nologin">已有账号？直接<a href="login.html">登录</a></div> 
+			  <div class="contact"><a href="contact.html">联系我们</a></div>
+        </div>
+        <div class="footer">
+            Copyright&nbsp;&copy;&nbsp;张振国&nbsp;
+        </div>
+    </body>
+</html>

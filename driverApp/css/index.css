@@ -1,0 +1,122 @@
+html {
+  font-size: 20px;
+}
+body {
+  font-size: 16px;
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 21.33333333px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 22.08px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 25.6px !important;
+  }
+}
+article{
+	padding: 10px;
+	background-color: #f1f1f1;
+}
+.xunjia-box{
+	position: relative;
+	top: -1px;
+	z-index: 0;
+	background-color: #fff;
+	border: 1px solid #cdcdcd;
+	padding: 5px;
+}
+.xunjia-box .inner
+{
+  height:1.5rem;
+  line-height:1.5rem;
+  border:1px solid #cdcdcd;
+  margin-bottom:0.6rem;
+}
+.xunjia-tab{
+	position: relative;
+	z-index: 1;
+	margin-top: 10px;
+}
+.xunjia-tab li{
+	float: left;
+	font-size: 0.65rem;
+	color: #fff;
+	text-align: center;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	line-height: 1.15rem;
+	padding:0.2rem 0.5rem;
+}
+.xunjia-tab li.red{
+	background-color: #f45438;
+}
+.xunjia-tab li.green{
+	background-color: #157b42;
+}
+.xunjia-box .inner
+{
+	padding:0.2rem;
+}
+.xunjia-box .item-name
+{
+ width:80%;
+ float:left;
+ text-align:left;
+}
+.xunjia-box .inner .item-value
+{
+	width:16%;
+	float:right;
+	text-align:center;
+	border-left:2px solid #cdcdcd;
+	
+}
+.head-box{
+	padding-top: 44px;
+	background-color: #157b42;
+}
+.head-box h3{
+	color: #fff;
+	text-align: center;
+	height:33px;
+	line-height:33px;
+}
+.head-box .head-icon-outer{
+
+	width: 5.75rem;
+	height: 5.75rem;
+	border-radius: 50%;
+	margin-left:auto;
+	margin-right:auto;
+	
+	background-color: #fff;
+}
+.head-box .head-icon-outer .head-icon{
+	position: absolute;
+	width: 5.4rem;
+	height: 5.4rem;
+	border-radius: 50%;
+	margin-left:auto;
+	margin-left:3px;
+	margin-right:auto;
+	margin-top:3px;
+	background: url(../img/touxiang.png) center center no-repeat;
+}
+.head-box h5{
+	color: #fff;
+	text-align: center;
+	font-size:0.75rem;
+	height:33px;
+	line-height:33px;
+	width: 100%;
+}
+h5 a:link{color:#ffffff;}
+h5 a:visited{color:#ffffff;}
+h5 a:hover{color:#ffffff;}
+h5 a:active{color:#ffffff;}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>振国驾考-模拟考试系统-登录</title>
+		<link rel="stylesheet" href="fonts/iconfont.css" />
+		<link rel="stylesheet" href="css/font.css" />
+		<link rel="stylesheet" href="css/mui.css" />
+		<link rel="stylesheet" href="css/login.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = "orientationchange" in window ? "orientationchange" : "resize",
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if (!clientWidth) return;
+						docEl.style.fontSize = 20 * (clientWidth / 320) + "px";
+					};
+
+				if (!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener("DOMContentLoaded", recalc, false);
+			})(document, window);
+
+			function checklogin() {
+				$("#errmsg").html("");
+				if ($("#username").val() == null || $("#username").val() == "") {
+					//mui.alert("请输入用户名！", "提示",function(){});
+					$("#errmsg").html("请输入用户名！");
+					return false;
+				} else
+				if ($("#password").val() == null || $("#password").val() == "") {
+					//mui.alert("请输入密码！", "提示",function(){});
+					$("#errmsg").html("请输入密码！");
+					return false;
+				} else {
+					var username = $("#username").value
+					var password = $("#password").value
+				    alert(username)
+					alert(password)
+					mui.post('http://127.0.0.1:8880/user/login', {
+						username: 'username',
+						password: 'password'
+					}, function(data) {
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						alert(data);
+						location.href = "index.html";
+					}, 'json');
+					
+				}
+			}
+
+			function changeImg() {
+				$("#code_img").attr("src", $("#code_img").attr("src") + 1);
+				return false;
+			}
+		</script>
+		<script type="text/javascript">
+			pushHistory();
+			window.addEventListener("popstate", function(e) {
+				pushHistory();
+			}, false);
+
+			function pushHistory() {
+				var state = {
+					title: "title",
+					url: "#"
+				};
+				window.history.pushState(state, "title", "#");
+			}
+		</script>
+	</head>
+	<body>
+		<div class="header">
+			<h1>振国驾考-模拟考试系统</h1>
+			<!-- <img src="img/logintitle.png" style="width:100%"/> -->
+		</div>
+		<div class="errmsg" id="errmsg"></div>
+		<div class="login-wrap">
+			<form action="" method="">
+				<div class="login-box">
+					<div class="input-wrap">
+						<input type="text" name="username" placeholder="手机号" id="username" value="" />
+					</div>
+					<div class="input-wrap">
+						<input type="password" name="passwd" placeholder="密码" id="password" value="" />
+					</div>
+
+				</div>
+				<div class="choose_box">
+					<input type="checkbox" checked="checked" name="rember" id="rember" value="1" style="-webkit-appearance:checkbox;" />
+					记住密码
+				</div>
+			</form>
+			<div class="btns"></div>
+			<a href="javascript:void(0)" onclick="javascript:checklogin()" class="weui_btn login-btn weui_btn_primary">登录</a>
+			<div class="nologin">还没有账号？请先<a href="regist.html">注册</a></div>
+			<div class="contact"><a href="contact.html">联系我们</a></div>
+		</div>
+		<div class="footer">
+			Copyright&nbsp;&copy;&nbsp;张振国&nbsp;
+		</div>
+	</body>
+</html>

@@ -1,0 +1,129 @@
+
+body {
+    background-color: #f1f1f1;
+}
+.titlebar.reverse{
+	border-color:#0498a1; 
+}
+
+
+article{
+	position: relative;
+}
+
+.no-data{
+	width:60%;
+	margin-top:30px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.no-data span{
+	display: block;
+	background-color: #157b42;
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+	border-radius: 50%;
+	line-height: 120px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.no-data span i{
+	color: #fff;
+	font-size: 70px;
+}
+
+.no-data label{
+	text-align: center;
+	color: #000;
+	display: inline-block;
+	font-size: 0.7rem;
+}
+
+.no-data .iconfont{
+	position: relative;
+	top: -5px;
+    line-height: 120px;
+    width: auto;
+    height: auto;
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 23px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 24px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 25.6px !important;
+  }
+}
+.xunjia-box{
+	position: relative;
+	top: -1px;
+	z-index: 0;
+	background-color: #fff;
+	border: 1px solid #cdcdcd;
+	padding: 5px;
+}
+.xunjia-box .inner
+{
+  height:1.5rem;
+  line-height:1.5rem;
+  border-bottom:1px solid #cdcdcd;
+  margin-bottom:0.6rem;
+}
+.xunjia-tab{
+	position: relative;
+	z-index: 1;
+	margin-top: 10px;
+}
+.xunjia-tab li{
+	float: left;
+	font-size: 0.65rem;
+	color: #fff;
+	text-align: center;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	line-height: 1.15rem;
+	padding:0.2rem 0.5rem;
+}
+.xunjia-tab li.red{
+	background-color: #ce1e3b;
+}
+.xunjia-tab li.blue{
+	background-color: #3f6dba;
+}
+.xunjia-tab li.green{
+	background-color: #10ed25;
+}
+.xunjia-tab li.gray{
+	background-color: #7b3211;
+}
+.xunjia-tab li.purple{
+	background-color: #651686;
+}
+.xunjia-box .inner
+{
+	padding:0.2rem;
+}
+.xunjia-box .item-name
+{
+ width:80%;
+ float:left;
+ text-align:left;
+}
+.xunjia-box .inner .item-value
+{
+	width:16%;
+	float:right;
+	text-align:center;
+	border-left:2px solid #cdcdcd;
+	
+}

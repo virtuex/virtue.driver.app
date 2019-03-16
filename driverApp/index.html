@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>振国驾考-模拟考试系统-首页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="fonts/iconfont.css"/>
+    <link rel="stylesheet" href="css/font.css"/>
+	<link rel="stylesheet" type="text/css" href="css/indexstyle.css">
+	<link rel="stylesheet" href="css/mui.min.css"/>
+    <script src="js/jquery-1.8.3.min.js"></script>
+	<script  src="js/mui.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			mui.toast('恭喜您，登陆成功',{ duration:'1000', type:'div' }) 
+			// alert(localStorage.getItem("token"));
+			$(".prospecl ul").hide();
+			$(".prospecl .title").click(function(){
+				
+				if ($(this).next().css('display') == "none") {
+                //展开未展开
+                   $('.prospecl').children('ul').slideUp(300);
+				   $(this).next('ul').slideDown();
+				   $(this).parent('.prospecl').children().children("i").html("&#xe607;").siblings('.prospecl').children().children("i").html("&#xe617;");
+                }else{
+                //收缩已展开
+					$(this).next('ul').slideUp(300);
+					$(this).children("i").html("&#xe617;");
+               }
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+		<div class="top" style="border-bottom:2px solid #006c2e;">
+		   <div style="float:right;margin-right:10px;"><a href="login.html">退出</a></div>
+		</div>
+		<div class="swiper-container">
+                <div class="swiper-wrapper" style="position:relative;">
+                    <div class="swiper-slide" style="width:100%;">
+					  <img src="img/bg.png"></img>
+					  <a href="user_center.html"><img src="img/touxiang.png" class="jihuo"  id="jihuo" style="position:absolute;z-index:1000;bottom:0px;"></img>
+					</a>
+					</div>
+                </div>
+        </div>
+        <!-- banner图结束 -->
+        <div class="prospecl">
+            <div class="title"><i class="iconfont" style="font-size:20px;color:#ffc231;">&#xe642;</i>&nbsp;&nbsp;习题练习</div>
+            <ul class="protips">
+                <li><a href="random_index.html"><span>随机练习</span></a></li>
+				<li><a href="strong_exam.html"><span>强化练习</span></a></li>
+            </ul>
+        </div>
+        <div class="prospecl">
+            <div class="title"><i class="iconfont" style="font-size:20px;color:#ffc231;">&#xe642;</i>&nbsp;&nbsp;模拟考试</div>
+            <ul class="protips">
+                <li><a href="all_random.html"><span>随机出题</span></a></li>
+                <li><a href="not_do_first.html"><span>优先考未做题</span></a></li>
+                <li><a href="all_exam_real.html"><span>全真模拟</span></a></li>
+            </ul>
+        </div>
+		<!-- <div class="prospecl">
+            <div class="title"><i class="iconfont" style="font-size:20px;color:#ffc231;">&#xe642;</i>&nbsp;&nbsp;个人中心</div>
+            <ul class="protips">
+                <li><a href="exam_list.html"><span>历史成绩</span></a></li>
+                <li><a href="error_dis.html"><span>回顾错题</span></a></li>
+				<li><a href="error_dis.html"><span>收藏试题</span></a></li>
+            </ul>
+        </div> -->
+        <div class="bottom">
+            <p>
+                Copyright&nbsp;©&nbsp;2019 <a href="javascript:" title="张振国">张振国</a> &nbsp;&nbsp;版权所有
+            </p>
+        </div>
+<!-- 右侧菜单 -->
+<script type="text/javascript">
+    
+</script>
+<script src="js/mui.min.js"></script>
+</body>
+</html>

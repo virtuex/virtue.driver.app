@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>振国驾考-模拟考试系统-章节练习</title>
+        <link rel="stylesheet" href="fonts/iconfont.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/mui.css"/>
+		<link rel="stylesheet" href="css/index.css">
+        <script>
+        (function (doc, win) {
+          var docEl = doc.documentElement,
+            resizeEvt = "orientationchange" in window ? "orientationchange" : "resize",
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              docEl.style.fontSize = 20 * (clientWidth / 320) + "px";
+            };
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener("DOMContentLoaded", recalc, false);
+        })(document, window);
+    </script>
+	<script type="text/javascript">
+             pushHistory(); 
+             window.addEventListener("popstate", function(e) { 
+				pushHistory();
+			 }, false); 
+			 function pushHistory() { 
+				var state = { 
+					title:"title", 
+					url:"#"
+				}; 
+				window.history.pushState(state, "title", "#"); 
+			} 
+	   </script>
+	   <style type="text/css">
+	     a:link {color:#157b42;}/* 未被访问的链接 */
+		 a:visited{color:#157b42;}/* 已被访问的链接 */
+		 a:hover{color:#157b42;}/* 鼠标指针移动到链接上 */
+		 a:active{color:#157b42;}/* 正在被点击的链接 */
+	   </style>
+    </head>
+    <body>
+        <header>
+            <div class="titlebar reverse" style="border-bottom:2px solid #02662e;">
+               <a href="index.html">
+                    <i class="iconfont">&#xe640;</i>
+                </a>
+				<h1>维修电工中级</h1>
+            </div>
+        </header>
+		<article style="width:100%;padding:0;">
+			<div class="head-box">
+               <h3>欢迎，xxxx</h3>
+               <div class="head-icon-outer">
+                    <div class="head-icon"></div>
+               </div>
+               <h5><a href="index.html">退出</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			   </h5>
+			   <div style="clear:both;"></div>
+            </div>
+		</article>
+        <article style="padding-bottom: 54px;padding-top:24px;">
+            <ul class="xunjia-tab clearfix">
+                <li class="red">理论知识</li>
+            </ul>
+            <ul class="xunjia-box">
+			   <li class="inner">
+				<div class="item-name">职业道德</div>
+				<div class="item-value">
+				  <a href="chapter_exam.html"><i class="iconfont">&#xe611;</i></a>
+				</div>
+			   </li> 
+			   <li class="inner">
+				<div class="item-name">基础知识</div>
+				<div class="item-value">
+				  <a href="chapter_exam.html"><i class="iconfont">&#xe611;</i></a>
+				</div>
+			   </li> 
+			   <li class="inner">
+				<div class="item-name">基本电子电路装调维修</div>
+				<div class="item-value">
+				  <a href="chapter_exam.html"><i class="iconfont">&#xe611;</i></a>
+				</div>
+			   </li> 
+			   <li class="inner">
+				<div class="item-name">继电控制电路装调维修</div>
+				<div class="item-value">
+				  <a href="chapter_exam.html"><i class="iconfont">&#xe611;</i></a>
+				</div>
+			   </li> 
+			   <li class="inner">
+				<div class="item-name">自动控制电路装调维修</div>
+				<div class="item-value">
+				  <a href="chapter_exam.html"><i class="iconfont">&#xe611;</i></a>
+				</div>
+			   </li> 
+		    </ul>
+        </article>
+        <footer>
+            <ul class="menubar animated fadeInUp delay3">
+                 <li class="tab" onclick="window.location='exam_list.html'">
+                    <i class="iconfont" style="font-size:24px;">&#xe61f;</i>
+                    <label class="tab-label">模拟考试</label>
+                </li>
+				<li class="tab" onclick="window.location='chapter_index.html'">
+                    <i class="iconfont">&#xe64a;</i>
+                    <label class="tab-label">章节练习</label>
+                    <span class="point"></span>
+                </li>
+                <li class="tab" onclick="window.location='error_dis.html'">
+                    <i class="iconfont">&#xe63f;</i>
+                    <label class="tab-label">错题题库</label>
+                </li>
+                <li class="tab" onclick="window.location='collect_dis.html'">
+                    <i class="iconfont">&#xe63e;</i>
+                    <label class="tab-label">我的收藏</label>
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>

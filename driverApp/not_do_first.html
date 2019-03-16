@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>振国驾考-模拟考试系统-自主练习</title>
+		<link rel="stylesheet" href="fonts/iconfont.css" />
+		<link rel="stylesheet" href="css/font.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/mui.css" />
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/TouchSlide.1.1.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+
+				String.prototype.format = function() {
+					if (arguments.length == 0) return this;
+					for (var s = this, i = 0; i < arguments.length; i++)
+						s = s.replace(new RegExp("\\{" + i + "\\}", "g"), arguments[i]);
+					return s;
+				};
+				//题目HTML
+				var newHtml = "<div class=\"item\">\n" +
+					"<div class=\"tit\" id=\"{0}\" qval=\"{1}\">\n" +
+					"\<span>{2}.</span>{16}\n" +
+					"</div>\n" +
+					"<div class=\"item_con\">\n" +
+					"<ul class=\"mui-table-view mui-table-view-radio\">\n" +
+					"<li class=\"mui-table-view-cell\">\n" +
+					"<a class=\"mui-navigate-right\" subid='{12} value='{3}' name='A'>{4}</a>\n" +
+					"</li>\n" +
+					"<li class=\"mui-table-view-cell\">\n" +
+					"<a class=\"mui-navigate-right\" subid='{13}' value='{5}' name='B'>{6}</a>\n" +
+					"</li>\n" +
+					"<li class=\"mui-table-view-cell\">\n" +
+					"<a class=\"mui-navigate-right\"  subid='{14}' value='{7}' name='C'>{8}</a>\n" +
+					"</li>\n" +
+					"<li class=\"mui-table-view-cell\">\n" +
+					"<a class=\"mui-navigate-right\" subid='{15}' value='{9}' name='D'>{10}</a>\n" +
+					"</li>\n" +
+					"</ul>\n" +
+					"</div>\n" +
+					"</div>\n" + "<div onclick=\"addCollection({11})\" style=\"padding:5px 10px;height:22px;\">\n" +
+					"<i class=\"iconfont\" style=\"color:#01868e\"></i>&nbsp;&nbsp;添加收藏\n" +
+					"</div>";
+				"<!--item结束-->"
+
+				var token  = localStorage.getItem("token");
+				mui.ajax('http://127.0.0.1:8880/api/item/not/do', {
+					data: {
+						token: token
+					},
+					// dataType: 'json', //服务器返回json格式数据
+					async: true,
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					// 					headers: {
+					// 						'Content-Type': 'application/json'
+					// 					},
+					success: function(mydata) {
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						var errorSub = "";
+						var code = mydata.retCode;
+						if (code == 200) {
+							const json_str = jQuery.parseJSON(JSON.stringify(mydata))
+							var message = json_str.data
+							localStorage.setItem("total",message.length);
+							$.each(message, function(i, obj) {
+								i = i + 1;
+								$('.test_con').append(
+									newHtml.format(obj.itemBankId, obj.itemBankAnswer, i, obj.itemBankAnswer, obj.itemBankChoiceA,
+										obj.itemBankAnswer, obj.itemBankChoiceB, obj.itemBankAnswer, obj.itemBankChoiceC, obj.itemBankAnswer,
+										obj.itemBankChoiceD, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId,
+										obj.itemBankSubject)
+								);
+
+							});
+						} else {
+							alert(mydata.message);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						//异常处理；
+						console.log(type);
+					}
+				});
+
+				//答案点击
+				$(".options").click(function() {
+					$("a.doing").addClass("done"); //答题板上的颜色
+					var val = $(this).attr("val"); //题目答案
+					var ids = $(this).attr("ids"); //题目编号
+					$("li[ids=" + ids + "]").removeClass("click");
+					$(this).addClass("click");
+					$(".doneCount").text($("a.done").length);
+					$("#QuestionA" + ids).val(val);
+					$("#TrueAns" + ids).text(val);
+				});
+				$("#closeLayAB").click(function() {
+					$("#layAB").hide();
+				});
+				
+			});
+		</script>
+		<script type="text/javascript">
+			pushHistory();
+			window.addEventListener("popstate", function(e) {
+				pushHistory();
+			}, false);
+
+			function pushHistory() {
+				var state = {
+					title: "title",
+					url: "#"
+				};
+				window.history.pushState(state, "title", "#");
+			}
+		</script>
+	</head>
+	<body>
+		<form id="UsersDo" name="UsersDo">
+			<header>
+				<div class="titlebar reverse">
+					<div>
+						<i class="iconfont">&#xe639;</i>
+						<i style="color:#ffffff;font-size:20px;font-weight:bold;margin-left:10px;">已答题（<span class="doneCount" style="margin-left:0;margin-top:-5px;">0</span>/10）</i>
+					</div>
+					<div style="color:#ffffff;font-size:20px;font-weight:bold;">
+						<img src="img/clock.png"></img>
+						<i class="timing" id="timer">
+							<b id="m"></b><b>:</b>
+							<b id="s"></b>
+						</i>
+					</div>
+				</div>
+			</header>
+			<article style="padding-bottom:44px;padding-top:44px;" id="leftTabBox">
+				<div id="wrapper" style="top:30px;">
+					<div id="scroller">
+						<div id="thelist">
+							<div class="test" style="display:block;margin:0 auto 0px auto;">
+								<div class="test_con">
+
+								</div>
+								<!--item结束-->
+							</div>
+							<!--test_con结束-->
+						</div>
+						<!--test结束-->
+					</div>
+					<!--test_con结束-->
+				</div>
+				</div>
+				<!--item结束-->
+				</div>
+				<!--test_con结束-->
+				</div>
+				<!--test结束-->
+				</div>
+				<!--thelist结束-->
+				</div>
+				<!--scroller结束-->
+				</div>
+				<!--wrapper结束-->
+			</article>
+			<a class="back" href="index.html"></a>
+			<footer>
+				<ul class="menubar animated fadeInUp delay3">
+					</li>
+					<li class="tab" id="SubmitExam" style="color:#888;font-family:microsoft yahei;">
+						<i class="iconfont">&#xe62c;</i>
+						<label class="tab-label">提交</label>
+					</li>
+				</ul>
+			</footer>
+			<script src="js/mui.min.js"></script>
+			<script type="text/javascript">
+				$(".con a").click(function() {
+					index = $(this).text() - 1;
+					s = $(".test").css("width")
+					temp = parseInt(s.substring(0, s.length - 2));
+					t = "-" + temp * index + "px";
+					document.getElementById("bd12").style.webkitTransform = "translate(" + t + ",0px)  translateZ(0px)";
+					$(".layAB").hide();
+				});
+				$("#AnsSheet").click(function() {
+					$(".layAB").show();
+				});
+				TouchSlide({
+					slideCell: "#leftTabBox",
+					startFun: function(i) { //已做题目标识
+						$("a.doing").removeClass("doing");
+						$(".con a").eq(i).addClass("doing");
+						i++;
+						$("#QuesDoing").val($("#QuestionDoing" + i).val());
+						$(".itemansw").css("display", "none");
+					}
+				});
+				/*倒计时*/
+				var count = 0;
+				var CUR_TIME = 0;
+				var END_TIME = 600;
+				var LEFT_TIME;
+				var M_LABEL;
+				var S_LABEL;
+				var ID;
+
+				function timer() {
+					if (ID) {
+						window.clearTimeout(ID);
+					}
+					if (!S_LABEL || !M_LABEL) {
+						M_LABEL = document.getElementById("m");
+						S_LABEL = document.getElementById("s");
+					}
+					LEFT_TIME = END_TIME - CUR_TIME;
+					if (LEFT_TIME > 0) {
+						M_LABEL.innerHTML = format(parseInt(LEFT_TIME / 60));
+						S_LABEL.innerHTML = format((LEFT_TIME % 60));
+						CUR_TIME++;
+						$("#current_time").val(CUR_TIME);
+						if (CUR_TIME == END_TIME) {
+							setTimeout("fSubmit()", 3000);
+						}
+					} else {
+						return 0;
+					}
+					ID = window.setTimeout(timer, 1000);
+				}
+
+				function fSubmit() {
+					document.UsersDo.submit();
+				}
+
+				function format(time) {
+					if (time < 10) {
+						return ("0" + time);
+					} else {
+						return time;
+					}
+				}
+				window.onload = function() {
+					timer()
+				}
+				$("#SubmitExam").click(function() {
+					var token = localStorage.getItem("token");
+					var errorStr = "";
+					var score = 0;
+					var errornum = 0;
+					var btnArray = ["否", "是"];
+					var total = $(".mui-table-view-cell");
+					var notnull = $(".mui-selected");
+					var total = localStorage.getItem("total");
+					localStorage.setItem("done",notnull.length)
+					if (total - notnull.length) {
+						mui.confirm("还有未答完的题目,确认要提交吗？", "确认提交", btnArray, function(e) {
+							if (e.index == 1) {
+								var total = $(".mui-table-view-cell");
+								var notnull = $(".mui-selected");
+								for (var i = 0; i < notnull.length; i++) { //由于获取的是数组对象,因此需要把它循环出来
+									var rightAnswer = $(notnull[i].innerHTML).attr("value");
+									var myAnswer = $(notnull[i].innerHTML).attr("name");
+									var subid = $(notnull[i].innerHTML).attr("subid");
+									if (rightAnswer == myAnswer) {
+										score = score + 1;
+									} else {
+										errorStr = errorStr + subid + "-";
+										errornum = errornum+1;
+									}
+								}
+							} else {}
+						})
+
+					} else {
+						var total = $(".mui-table-view-cell");
+						var notnull = $(".mui-selected");
+						
+						for (var i = 0; i < notnull.length; i++) { //由于获取的是数组对象,因此需要把它循环出来
+							var rightAnswer = $(notnull[i].innerHTML).attr("value");
+							var myAnswer = $(notnull[i].innerHTML).attr("name");
+							var subid = $(notnull[i].innerHTML).attr("subid");
+							if (rightAnswer == myAnswer) {
+								score = score + 1;
+							} else {
+								errorStr = errorStr + subid + "-";
+								errornum = errornum+1;
+							}
+						}
+					}
+					mui.ajax('http://127.0.0.1:8880/user/grade/add', {
+						data: {
+							score: score,
+							errorStr: errorStr,
+							token:token
+						},
+						// dataType: 'json', //服务器返回json格式数据
+						async: true,
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						// 					headers: {
+						// 						'Content-Type': 'application/json'
+						// 					},
+						success: function(mydata) {
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							var errorSub = "";
+							var code = mydata.retCode;
+							if (code == 200) {
+								//存储成绩
+								localStorage.setItem("right",score);
+								localStorage.setItem("errornum",errornum);
+								// alert(score+" "+errornum)
+								window.location.href="exam_do.html";
+							} else {
+								alert(mydata.message);
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理；
+						}
+					});
+
+				});
+
+				function addCollection(questionid) {
+					var token = localStorage.getItem("token");
+					mui.ajax('http://127.0.0.1:8880//api/item/collect', {
+						data: {
+							questionid: questionid,
+							token:token
+						
+						},
+						// dataType: 'json', //服务器返回json格式数据
+						async: true,
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						success: function(mydata) {
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							var errorSub = "";
+							var code = mydata.retCode;
+							if (code == 200) {
+								mui.alert(mydata.message, "提示","确认", function() {});
+							} else {
+								mui.alert(mydata.message, "提示","确认", function() {});
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理；
+							console.log(type);
+						}
+					});
+					
+				}
+			</script>
+		</form>
+	</body>
+</html>
