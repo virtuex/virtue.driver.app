@@ -30,7 +30,7 @@
 					"<div class=\"item_con\">\n" +
 					"<ul class=\"mui-table-view mui-table-view-radio\">\n" +
 					"<li class=\"mui-table-view-cell\">\n" +
-					"<a class=\"mui-navigate-right\" subid='{12} value='{3}' name='A'>{4}</a>\n" +
+					"<a class=\"mui-navigate-right\" subid='{12}' value='{3}' name='A'>{4}</a>\n" +
 					"</li>\n" +
 					"<li class=\"mui-table-view-cell\">\n" +
 					"<a class=\"mui-navigate-right\" subid='{13}' value='{5}' name='B'>{6}</a>\n" +
@@ -43,16 +43,40 @@
 					"</li>\n" +
 					"</ul>\n" +
 					"</div>\n" +
-					"</div>\n" + "<div onclick=\"addCollection({11})\" style=\"padding:5px 10px;height:22px;\">\n" +
+					"</div>\n" +
+					"<img src='{17}'/>" +
+					"<div onclick=\"addCollection({11})\" style=\"padding:5px 10px;height:22px;\">\n" +
 					"<i class=\"iconfont\" style=\"color:#01868e\"></i>&nbsp;&nbsp;添加收藏\n" +
 					"</div>";
 				"<!--item结束-->"
+				//题目HTML
+				var newJudgeHtml = "<div class=\"item\">\n" +
+					"<div class=\"tit\" id=\"{0}\" qval=\"{1}\">\n" +
+					"\<span>{2}.</span>{16}\n" +
+					"</div>\n" +
+					"<div class=\"item_con\">\n" +
+					"<ul class=\"mui-table-view mui-table-view-radio\">\n" +
+					"<li class=\"mui-table-view-cell\">\n" +
+					"<a class=\"mui-navigate-right\" subid='{12} value='{3}' name='A'>{4}</a>\n" +
+					"</li>\n" +
+					"<li class=\"mui-table-view-cell\">\n" +
+					"<a class=\"mui-navigate-right\" subid='{13}' value='{5}' name='B'>{6}</a>\n" +
+					"</li>\n" +
+					"</ul>\n" +
+					"</div>\n" +
+					"</div>\n" +
+					"<img src='{17}'/>" +
+					"<div onclick=\"addCollection({11})\" style=\"padding:5px 10px;height:22px;\">\n" +
+					"<i class=\"iconfont\" style=\"color:#01868e\"></i>&nbsp;&nbsp;添加收藏\n" +
+					"</div>";
+				"<!--item结束-->"
+				
+				
 
 				//请求题目
 				//使用完后去掉現有的緩存
 				mui.ajax('http://127.0.0.1:8880/api/item/real/all', {
-					data: {
-					},
+					data: {},
 					// dataType: 'json', //服务器返回json格式数据
 					async: true,
 					type: 'post', //HTTP请求类型
@@ -67,16 +91,24 @@
 						if (code == 200) {
 							const json_str = jQuery.parseJSON(JSON.stringify(mydata))
 							var message = json_str.data
-							localStorage.setItem("total",message.length);
+							localStorage.setItem("total", message.length);
 							$.each(message, function(i, obj) {
 								i = i + 1;
-								$('.test_con').append(
-									newHtml.format(obj.itemBankId, obj.itemBankAnswer, i, obj.itemBankAnswer, obj.itemBankChoiceA,
-										obj.itemBankAnswer, obj.itemBankChoiceB, obj.itemBankAnswer, obj.itemBankChoiceC, obj.itemBankAnswer,
-										obj.itemBankChoiceD, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId,
-										obj.itemBankSubject)
-								);
-
+								if (obj.itemBankSubjectType == 1) {
+									$('.test_con').append(
+										newHtml.format(obj.itemBankId, obj.itemBankAnswer, i, obj.itemBankAnswer, obj.itemBankChoiceA,
+											obj.itemBankAnswer, obj.itemBankChoiceB, obj.itemBankAnswer, obj.itemBankChoiceC, obj.itemBankAnswer,
+											obj.itemBankChoiceD, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId,
+											obj.itemBankSubject,obj.itemBankSubjectImageUrl)
+									);
+								} else {
+									$('.test_con').append(
+										newJudgeHtml.format(obj.itemBankId, obj.itemBankAnswer, i, obj.itemBankAnswer, obj.itemBankChoiceA,
+											obj.itemBankAnswer, obj.itemBankChoiceB, obj.itemBankAnswer, obj.itemBankChoiceC, obj.itemBankAnswer,
+											obj.itemBankChoiceD, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId,
+											obj.itemBankSubject,obj.itemBankSubjectImageUrl)
+									);
+								}
 							});
 						} else {
 							alert(mydata.message);
@@ -102,7 +134,7 @@
 				$("#closeLayAB").click(function() {
 					$("#layAB").hide();
 				});
-				
+
 			});
 		</script>
 		<script type="text/javascript">
@@ -254,7 +286,7 @@
 					var total = $(".mui-table-view-cell");
 					var notnull = $(".mui-selected");
 					var total = localStorage.getItem("total");
-					localStorage.setItem("done",notnull.length)
+					localStorage.setItem("done", notnull.length)
 					if (total - notnull.length) {
 						mui.confirm("还有未答完的题目,确认要提交吗？", "确认提交", btnArray, function(e) {
 							if (e.index == 1) {
@@ -268,7 +300,7 @@
 										score = score + 1;
 									} else {
 										errorStr = errorStr + subid + "-";
-										errornum = errornum+1;
+										errornum = errornum + 1;
 									}
 								}
 							} else {}
@@ -277,7 +309,7 @@
 					} else {
 						var total = $(".mui-table-view-cell");
 						var notnull = $(".mui-selected");
-						
+
 						for (var i = 0; i < notnull.length; i++) { //由于获取的是数组对象,因此需要把它循环出来
 							var rightAnswer = $(notnull[i].innerHTML).attr("value");
 							var myAnswer = $(notnull[i].innerHTML).attr("name");
@@ -286,7 +318,7 @@
 								score = score + 1;
 							} else {
 								errorStr = errorStr + subid + "-";
-								errornum = errornum+1;
+								errornum = errornum + 1;
 							}
 						}
 					}
@@ -294,7 +326,7 @@
 						data: {
 							score: score,
 							errorStr: errorStr,
-							token:token
+							token: token
 						},
 						// dataType: 'json', //服务器返回json格式数据
 						async: true,
@@ -309,9 +341,9 @@
 							var code = mydata.retCode;
 							if (code == 200) {
 								//存储成绩
-								localStorage.setItem("right",score);
-								localStorage.setItem("errornum",errornum);
-								window.location.href="exam_do.html";
+								localStorage.setItem("right", score);
+								localStorage.setItem("errornum", errornum);
+								window.location.href = "exam_do.html";
 							} else {
 								alert(mydata.message);
 							}
@@ -328,8 +360,8 @@
 					mui.ajax('http://127.0.0.1:8880//api/item/collect', {
 						data: {
 							questionid: questionid,
-							token:token
-						
+							token: token
+
 						},
 						// dataType: 'json', //服务器返回json格式数据
 						async: true,
@@ -340,9 +372,9 @@
 							var errorSub = "";
 							var code = mydata.retCode;
 							if (code == 200) {
-								mui.alert(mydata.message, "提示","确认", function() {});
+								mui.alert(mydata.message, "提示", "确认", function() {});
 							} else {
-								mui.alert(mydata.message, "提示","确认", function() {});
+								mui.alert(mydata.message, "提示", "确认", function() {});
 							}
 						},
 						error: function(xhr, type, errorThrown) {
@@ -350,7 +382,7 @@
 							console.log(type);
 						}
 					});
-					
+
 				}
 			</script>
 		</form>

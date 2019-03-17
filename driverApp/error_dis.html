@@ -140,16 +140,19 @@
 					"</ul>\n" +
 					"</div>\n" +
 					"</div>\n" + 
+						"<img src='{19}'/>" +
 					"<div onclick=\"addCollection({11})\" style=\"padding:5px 10px;height:22px;\">\n" +
 					"<i class=\"iconfont\" style=\"color:#01868e\"></i>&nbsp;&nbsp;添加收藏\n<br>" +
 					"</div>"+
 					"<div  style=\"padding:5px 10px;height:22px;\">\n" +
 					"<i class='iconfont' style='color:#01868e'>&#xe635;</i>&nbsp;&nbsp;正确答案：{17};"+
 					"</div>"+
-					"<div  style=\"padding:5px 10px;height:22px;\">\n" +
+					"<div  style=\"padding:5px 10px;height:150px;\">\n" +
 					"<i class='iconfont' style='color:#01868e'>&#xe635;</i>&nbsp;&nbsp;知识点解析：{18};"+
 					"</div>";
 				"<!--item结束-->"
+				
+				
 				var token = localStorage.getItem("token");
 				mui.ajax('http://127.0.0.1:8880/api/item/my/error', {
 					data: {
@@ -176,7 +179,7 @@
 									newHtml.format(obj.itemBankId, obj.itemBankAnswer, i, obj.itemBankAnswer, obj.itemBankChoiceA,
 										obj.itemBankAnswer, obj.itemBankChoiceB, obj.itemBankAnswer, obj.itemBankChoiceC, obj.itemBankAnswer,
 										obj.itemBankChoiceD, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId,
-										obj.itemBankSubject,obj.itemBankAnswer,obj.itemBankAnswerAnalyse)
+										obj.itemBankSubject,obj.itemBankAnswer,obj.itemBankAnswerAnalyse,obj.itemBankSubjectImageUrl)
 								);
 
 							});
@@ -209,8 +212,8 @@
 	<body oncopy="document.selection.empty()" onbeforecopy="return false">
 		<header>
 			<div class="titlebar reverse" style="border-bottom:2px solid #01868e;">
-				<a href="examlist.php">
-					<i class="iconfont">&#xe640;</i>
+				<a onclick="javascript:history.go(-1);">
+					<i  onclick="javascript:history.go(-1);" class="iconfont">&#xe640;</i>
 				</a>
 				<h1 style="margin:none;margin-top:0;margin-bottom:0;">我的错题</h1>
 			</div>

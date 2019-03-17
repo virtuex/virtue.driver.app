@@ -28,7 +28,7 @@
 					"<div class=\"item_con\">\n" +
 					"<ul class=\"mui-table-view mui-table-view-radio\">\n" +
 					"<li class=\"mui-table-view-cell\">\n" +
-					"<a class=\"mui-navigate-right\" subid='{12} value='{3}' name='A'>{4}</a>\n" +
+					"<a class=\"mui-navigate-right\" subid='{12}' value='{3}' name='A'>{4}</a>\n" +
 					"</li>\n" +
 					"<li class=\"mui-table-view-cell\">\n" +
 					"<a class=\"mui-navigate-right\" subid='{13}' value='{5}' name='B'>{6}</a>\n" +
@@ -41,7 +41,30 @@
 					"</li>\n" +
 					"</ul>\n" +
 					"</div>\n" +
-					"</div>\n" + "<div onclick=\"addCollection({11})\" style=\"padding:5px 10px;height:22px;\">\n" +
+					"</div>\n" +
+					"<img src='{17}'/>" +
+					"<div onclick=\"addCollection({11})\" style=\"padding:5px 10px;height:22px;\">\n" +
+					"<i class=\"iconfont\" style=\"color:#01868e\"></i>&nbsp;&nbsp;添加收藏\n" +
+					"</div>";
+				"<!--item结束-->"
+				//题目HTML
+				var newJudgeHtml = "<div class=\"item\">\n" +
+					"<div class=\"tit\" id=\"{0}\" qval=\"{1}\">\n" +
+					"\<span>{2}.</span>{16}\n" +
+					"</div>\n" +
+					"<div class=\"item_con\">\n" +
+					"<ul class=\"mui-table-view mui-table-view-radio\">\n" +
+					"<li class=\"mui-table-view-cell\">\n" +
+					"<a class=\"mui-navigate-right\" subid='{12} value='{3}' name='A'>{4}</a>\n" +
+					"</li>\n" +
+					"<li class=\"mui-table-view-cell\">\n" +
+					"<a class=\"mui-navigate-right\" subid='{13}' value='{5}' name='B'>{6}</a>\n" +
+					"</li>\n" +
+					"</ul>\n" +
+					"</div>\n" +
+					"</div>\n" +
+					"<img src='{17}'/>" +
+					"<div onclick=\"addCollection({11})\" style=\"padding:5px 10px;height:22px;\">\n" +
 					"<i class=\"iconfont\" style=\"color:#01868e\"></i>&nbsp;&nbsp;添加收藏\n" +
 					"</div>";
 				"<!--item结束-->"
@@ -77,12 +100,21 @@
 							localStorage.setItem("total", message.length);
 							$.each(message, function(i, obj) {
 								i = i + 1;
-								$('.test_con').append(
-									newHtml.format(obj.itemBankId, obj.itemBankAnswer, i, obj.itemBankAnswer, obj.itemBankChoiceA,
-										obj.itemBankAnswer, obj.itemBankChoiceB, obj.itemBankAnswer, obj.itemBankChoiceC, obj.itemBankAnswer,
-										obj.itemBankChoiceD, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId,
-										obj.itemBankSubject)
-								);
+								if (obj.itemBankSubjectType == 1) {
+									$('.test_con').append(
+										newHtml.format(obj.itemBankId, obj.itemBankAnswer, i, obj.itemBankAnswer, obj.itemBankChoiceA,
+											obj.itemBankAnswer, obj.itemBankChoiceB, obj.itemBankAnswer, obj.itemBankChoiceC, obj.itemBankAnswer,
+											obj.itemBankChoiceD, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId,
+											obj.itemBankSubject,obj.itemBankSubjectImageUrl)
+									);
+								} else {
+									$('.test_con').append(
+										newJudgeHtml.format(obj.itemBankId, obj.itemBankAnswer, i, obj.itemBankAnswer, obj.itemBankChoiceA,
+											obj.itemBankAnswer, obj.itemBankChoiceB, obj.itemBankAnswer, obj.itemBankChoiceC, obj.itemBankAnswer,
+											obj.itemBankChoiceD, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId, obj.itemBankId,
+											obj.itemBankSubject,obj.itemBankSubjectImageUrl)
+									);
+								}
 
 							});
 						} else {
