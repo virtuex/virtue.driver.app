@@ -12,6 +12,7 @@
 		<script src="js/jquery-1.8.3.min.js"></script>
 		<script src="js/TouchSlide.1.1.js"></script>
 		<script src="js/mui.min.js"></script>
+		<script src="js/common_data.js"></script>
 		<script type="text/javascript">
 			$(function() {
 
@@ -77,7 +78,7 @@
 				//使用完后去掉現有的緩存
 				localStorage.removeItem("choiceNum");
 				localStorage.removeItem("judgeNum");
-				mui.ajax('http://127.0.0.1:8880/api/item/random/all', {
+				mui.ajax(getAddress()+'/api/item/random/all', {
 					data: {
 						choiceNum: choiceNum,
 						judgeNum: judgeNum
@@ -328,7 +329,7 @@
 							}
 						}
 					}
-					mui.ajax('http://127.0.0.1:8880/user/grade/add', {
+					mui.ajax(getAddress()+'/user/grade/add', {
 						data: {
 							score: score,
 							errorStr: errorStr,
@@ -364,7 +365,7 @@
 
 				function addCollection(questionid) {
 					var token = localStorage.getItem("token");
-					mui.ajax('http://127.0.0.1:8880//api/item/collect', {
+					mui.ajax(getAddress()+'/api/item/collect', {
 						data: {
 							questionid: questionid,
 							token: token

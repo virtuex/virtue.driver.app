@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="css/login.css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/mui.min.js"></script>
-		<script type="text/javascript" src="js/basedata.js"></script>
+		<script src="js/common_data.js"></script>
 		<script>
 			(function(doc, win) {
 				var docEl = doc.documentElement,
@@ -40,7 +40,7 @@
 				} else {
 					var username = $("#username").val()
 					var password = $("#password").val()
-					mui.post('http://127.0.0.1:8880/user/login', {
+					mui.post(getAddress()+'/user/login', {
 						username: username,
 						password: password
 					}, function(mydata) {

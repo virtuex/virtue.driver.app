@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/font.css" />
 		<link rel="stylesheet" href="css/mui.css" />
 		<link rel="stylesheet" href="css/mui.min.css" />
+		<script src="js/common_data.js"></script>
 		<script type="application/javascript" src="js/iscroll.js"></script>
 		<style type="text/css" media="all">
 			body,
@@ -173,7 +174,7 @@
 					"</div>";
 				"<!--item结束-->"
 				var token = localStorage.getItem("token");
-				mui.ajax('http://127.0.0.1:8880/api/item/my/collect', {
+				mui.ajax(getAddress()+'/api/item/my/collect', {
 					data: {
 						token: token
 					},
@@ -300,7 +301,7 @@
 			
 			function addCollection(questionid) {
 				var token = localStorage.getItem("token");
-				mui.ajax('http://127.0.0.1:8880/api/item/collect/remove', {
+				mui.ajax(getAddress()+'/api/item/collect/remove', {
 					data: {
 						questionid: questionid,
 						token:token

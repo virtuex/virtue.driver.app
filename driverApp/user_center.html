@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="css/table.css" />
 		<script src="js/jquery.min.js"></script>
 		<script src="js/date.js"></script>
+		<script src="js/common_data.js"></script>
 		<script type="text/javascript">
 			String.prototype.format = function() {
 				if (arguments.length == 0) return this;
@@ -43,7 +44,7 @@
 					"<td data-label=\"成绩\">{1}</td>\n" +
 					"<td data-label=\"日期\">{2}</td>\n" +
 					"</tr>";
-				mui.ajax('http://127.0.0.1:8880/api/grade/my', {
+				mui.ajax(getAddress()+'/api/grade/my', {
 					data: {
 						token: token
 					},
